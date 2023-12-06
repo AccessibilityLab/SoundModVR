@@ -29,7 +29,6 @@ This is the list of features. They are divided into 4 categories - ***Prioritiza
 <div id="group-prioritization"></div>
 
 ### 1) Group Prioritization
-See example in Group Prioritization Example Scene.<br />
 The **GroupPrioritizationManager** Script has a property `Group Managers List` where you can add **GroupManager** objects. If these are not assigned, it will automatically search for **GroupManager** in their children Game Objects. <br />
 Each **GroupManager** will have a property `Speech Source List` you can add **SpeechSource** objects into. If these are not assigned, it will automatically search for **SpeechSource** in their children Game Objects.<br />
 Each **SpeechSource** should have a corresponding **AudioSource**, and initially `is Not Focused` is true. The `is Keyword Detected` is used in combination with the Keyword Prioritization Feature.<br />
@@ -52,7 +51,6 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 <div id="keyword-prioritization"></div>
 
 ### 2) Keyword Prioritization
-See example in Keyword Prioritization Example Scene. <br/>
 The **KeywordDetectionManager** is used to control this feature. It has a property, `keywords`, which is a List of strings that identify the keywords to look out for. <br/>
 It also allows you to set a notification sound by setting the `Notification Clip` variable. <br/>
 
@@ -77,7 +75,6 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 <div id="speech-prioritization"></div>
 
 ### 3) Speech Prioritization
-See example in Speech Prioritization Example Scene. <br/>
 The **SpeechPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Environment Mixer`, the `Env Mixer Vol Label`, and the `Character Audio Source List`. The environment mixer is the audio mixer for the environment sounds. The Env Mixer Vol Label is the exposed parameter from the environment audio mixer. To do this, right-click on the volume in the audio mixer inspector and select “Expose “” to script”. It will then be accessible in exposed parameters. The character audio source list contains all of the character audio sources to keep track of. <br/>
 Before the character speech, call `LowerEnvSoundsVolume()`, and after the character finishes speaking, run the `RecoverEnvSoundsVolume` Coroutine, both described below.
 
@@ -107,7 +104,6 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 <div id="volume-and-pitch-adjustment"></div>
 
 ### 4) Volume and Pitch Adjustment
-See example in Volume and Pitch Adjustment Example Scene. <br/>
 The **VolPitchShiftManager** is used to control this feature. It has several properties to set before use, including `Audio User Group`, `Audio Sources List`, `Pitch Label`, and `Volume Label`. The Audio Mixer Group allows you to set the audio mixer to be used. The Audio Sources List compiles all audio sources to be impacted by this volume and pitch control, with an empty or unset list resulting in system-wide changes. The Pitch and Volume Labels are the exposed parameters from the audio mixer. To do so, right-click on the pitch and volume in the audio mixer and select “Expose “” to script”. These will then be accessible in exposed parameters. <br/>
 
 **Public Functions**: 
@@ -134,7 +130,6 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 <div id="speech-speed-adjustment"></div>
 
 ### 5) Speech Speed Adjustment
-See example in Speech Speed Adjustment Example Scene. <br/>
 The **SpeechSpeedManager** is used to control this feature. It requires you to assign an **AudioSource** to the script in the `Audio Source` field, otherwise, it will assume it is attached to a game object with an **AudioSource**. You also need to set the audio mixer to be used in the Master Mixer field. You then need to expose the Pitch element in the AudioMixer and add the parameter name of the pitch parameter to the `audioMixerPitchLabel` field.
 
 **Public Functions**
@@ -157,7 +152,6 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 <div id="shoulder-localization-helper"></div>
 
 ### 6) Shoulder Localization Helper
-See example in Shoulder Localization Helper Example Scene. <br/>
 The **ShoulderLocalizationManager** Script is used for this feature. It requires you to attach the main camera of the player to the `Main Camera` field. It requires you to assign an **AudioSource** to the script in the `Audio Source` field, otherwise, it will assume it is attached to a game object with an **AudioSource**. One optional field is `targetAudioSource`, for the case where there's only one target. Two additional optional fields are `leftAudioClip` and `rightAudioClip`, where the developer can input their own direction indicator than the default sounds.
 
 **Public Functions**
@@ -173,13 +167,13 @@ The **ShoulderLocalizationManager** Script is used for this feature. It requires
 4. *If the feature is used for a fixed **AudioSource**, you could attach that **AudioSource** to the `Target Audio Source` field.*
 5. *If you wish to use audio clips or notification clips other than the default sounds "To your left" and "To your right", attach them in the `Left Audio Clip` and `Right Audio Clip` fields.*
 6. *When you want to play the **ShoulderLocalizationManager** alerts, call the function `PlayLocationAlert()` or `PlayAlertWithDefinedTarget()` as documented above.*
+</details>
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/45d2db36-bea6-479f-a17e-a2fd176c55c1
 
 <div id="live-listen-helper"></div>
 
 ### 7) Live Listen Helper
-See example in Live Listen Helper Example Scene. <br/>
 The **LiveListenHelperManager** Script is used for this feature. It should be attached to a game object that the user can grab and move around the scene. On the same object, there should be an **AudioListener** Component attached. The developer should add the list of **AudioSource** that they want the Live Listen Helper to apply to into the field `Audio Source List`. The developer could also edit the cutoff of the sound single-out effect, the default of the cutoff is 0.5f. To enable the user to start using and finish using the feature, the developer should call the `StartUsingLiveListenHelper` and `StopUsingLiveListenHelper` functions as the user picks up and drops the object.
 
 **Public Functions**
@@ -201,7 +195,6 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 <div id="smart-notification"></div>
 
 ### 8) Smart Notification
-See example in Smart Notification Example Scene. <br/>
 This feature uses the script **SmartnotificationManager** to control the on and off, and the sounds played as the smart notification. The script has a public boolean variable `smartNotificationOn` to indicate whether the smart notification feature is on or off. The developer can also customize the notification clip in the Notification Clip field, with the default provided in the toolkit. Before playing an important sound, the developer could call `PlaySmartNotification()`.
 
 **Public Functions**
