@@ -9,7 +9,7 @@ This is a Unity Toolkit that contains nine features for Sound Customization for 
 ## 3. Features List
 This is the list of features. They are divided into 4 categories - ***Prioritization, Sound Parameter Changes, Spatial Assistance, and Add-on Sounds***. Each feature should work independently, and some features could work together.
 ### 3.1 Prioritization
-**Group Prioritization**: When having multiple groups of sounds, focus on a specific group and lower sounds of all other groups.<br />
+[**Group Prioritization**](#group-prioritization): When having multiple groups of sounds, focus on a specific group and lower sounds of all other groups.<br />
 **Keyword Prioritization**: Set specific keywords you're interested in, and the program will play a notification and increase speech volume when it's played.<br />
 **Speech Prioritization**: Lower environment sounds during speech.
 
@@ -26,6 +26,8 @@ This is the list of features. They are divided into 4 categories - ***Prioritiza
 **Custom Feedback Sound**: Change the feedback sounds in the system to your individual preferences/needs.
 
 ## 4. Usage Guide
+<div id="group-prioritization"></div>
+
 ### 1) Group Prioritization
 See example in Group Prioritization Example Scene.<br />
 The **GroupPrioritizationManager** Script has a property `Group Managers List` where you can add **GroupManager** objects. If these are not assigned, it will automatically search for **GroupManager** in their children Game Objects. <br />
