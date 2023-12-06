@@ -38,12 +38,14 @@ Each **SpeechSource** should have a corresponding **AudioSource**, and initially
 
 `OnSelectedGroupChange()`: This function takes in the number corresponding to the selected group. It makes the sound volume for the newly selected group higher and sets all other groups to a lower volume. If the selected group number is 0, then all groups will be reset to the original volume. There is no output for this function.
 
-**Implementation Steps:**
+<details><summary><b>Implementation Steps:</b></summary>
+
 1. *Create a **Group Prioritization Manager** Object, and create several groups as its children.*
 2. *Add Script **GroupPrioritizationManager** to the **Group Prioritization Manager** Object, and attach a **GroupManager** Script to each Group Object.*
 3. *Add **SpeechSource** Script to different **AudioSources** involved in the different groups, and attach these **SpeechSource** scripts to the `Speech Source List` in their corresponding **GroupManager** Script.*
 4. *Add the **GroupManger** Scripts to the `Group Managers List` in the corresponding **GroupPrioritizationManager** Script.*
 5. *Call `OnSelectedGroupChange()` when the selected group is changed. See the documentation of the function above for more details.*
+</details>
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/a0d4451d-3a63-47f3-967a-7e1bd93900ec
 
@@ -62,11 +64,13 @@ It also allows you to set a notification sound by setting the `Notification Clip
 
 `detectKeywordAndPlay(string script, SpeechSource speechSource, AudioClip audioClip)`: This coroutine locates keywords in the script and plays a notification sound. It also increases the volume of the sentence the keyword is a part of. When the sentence is done, it reverts to the volume prior to the keyword being detected. The inputs include the script, wherein the keyword might be detected, the speechSource, and the audio clip, both of which will be used to output the sounds. The output is an IEnumerator, which could be started with a `StartCoroutine()`.
 
-**Implementation Steps:**
+<details><summary><b>Implementation Steps:</b></summary>
+
 1. *Add a **Keyword Detection Manager** to the scene and attach a **KeywordDetectionManager** Script.*
 2. *To add a keyword, call `AddOrSubtractKeyword()` as documented above.*
 3. *Attach a **SpeechSource** Script to the **AudioSource** that will play the sentences and attach the **AudioSource** to the **SpeechSource**.*
 4. *When playing a sentence that might contain the keyword and you want to detect it, start the `detectKeywordAndPlay` coroutine with the sentence's script, corresponding **SpeechSource**, and corresponding **AudioClip**.*
+</details>
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/fb1c8767-987c-4594-a488-c216781977a9
 
@@ -87,7 +91,8 @@ Before the character speech, call `LowerEnvSoundsVolume()`, and after the charac
 
 `recoverEnvSoundsVolume()`: This resets the environment volume once no characters are speaking. There is an IEnumerator returned. 
 
-**Implementation Steps:**
+<details><summary><b>Implementation Steps:</b></summary>
+
 1. *Add a **Speech Prioritization Manager** to the scene and attach a **SpeechPrioritizationManager** Script.*
 2. *Create a new Mixer in the **AudioMixer** tab, and for all **AudioSoruce** that should be considered the Environment Sound, assign their Mixer group to be this new mixer.*
 3. *Go to the Inspector of the music mixer, right-click on **Volume**, and select "Expose ... to script"*
@@ -95,6 +100,7 @@ Before the character speech, call `LowerEnvSoundsVolume()`, and after the charac
 5. *Assign the new Mixer to the `Environment_Mixer` field in **SpeechPrioritizationManager**, and input the name of the new parameter to `Env Moxer Vol Label` field.*
 6. *Add all **AudioSource** of Character speech to the `Character Audio Source List`.*
 7. *Before the character speech, call `lowerEnvSoundsVolume()`, and after the character finishes speaking, run the `RecoverEnvSoundsVolume` Coroutine, both documented above.*
+</details>
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/1ef3bbd5-ab21-4c19-9ec8-122664c0a60c
 
@@ -110,7 +116,8 @@ The **VolPitchShiftManager** is used to control this feature. It has several pro
 
 `ShiftVolume(float val)`: This function changes the volume to the float input value for each audio mixer in the group. There is no output.
 
-**Implementation Steps:**
+<details><summary><b>Implementation Steps:</b></summary>
+
 1. *Add a **VolumePitchShiftManager** Script to the Scene.*
 3. *Add all **AudioSources** affected by this shift to the `Audio Sources List`. For system-level control, you can leave this field empty.*
 2. *Create a new Mixer in the AudioMixer tab, and for all **AudioSoruce** that should be controlled by this feature, assign their Mixer group to be this new mixer.*
@@ -118,6 +125,7 @@ The **VolPitchShiftManager** is used to control this feature. It has several pro
 4. *In the "Exposed parameters" list in the Audio Mixer tab, get the names of the newly created parameters.*
 5. *Enter the new parameter names in the `Pitch Label` and `Volume Label` fields in the **VolPitchShiftManager** Script.*
 6. *To shift the volume and pitch, use `ShiftPitch()` and `ShiftVolume()` documented above.*
+</details>
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/a2b2f449-8776-4f9f-9a66-2a1372f41c4c
 
@@ -133,7 +141,8 @@ The **SpeechSpeedManager** is used to control this feature. It requires you to a
 
 `ShiftSpeed(float)`: This function changes the speed of the AudioSource linked to this manager by the value input into the function.
 
-**Implementation Steps:**
+<details><summary><b>Implementation Steps:</b></summary>
+
 1. *Add a **SpeechSpeedAdjustmentManager** in the Scene.*
 2. *Assign the **AudioSoruce** that should be controlled by this feature to the `Audio Source` field.*
 3. *Create a new Mixer in the AudioMixer tab, and for the **AudioSoruce** that should be controlled by this feature, assign its Mixer group to be this new mixer.*
@@ -141,6 +150,7 @@ The **SpeechSpeedManager** is used to control this feature. It requires you to a
 5. *In the "Exposed parameters" list in the Audio Mixer tab, get the name of the newly created parameters.*
 6. *Enter the new parameter names in the `Audio Mixer Pitch label` fields in the **SpeechSpeedAdjustmentManager** Script.*
 7. *Use the `ShiftSpeed()` function documented above to shift the speed of the character's speech.*
+</details>
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/821f3831-8010-4157-8ffe-ceb5c6d27ae6
 
@@ -155,7 +165,8 @@ The **ShoulderLocalizationManager** Script is used for this feature. It requires
 
 `PlayAlertWithDefinedTarget()`: This function takes in no parameter, and will call **PlayLocationAlert** using the optional `targetAudioSource` field as the sound source.
 
-**Implementation Steps:**
+<details><summary><b>Implementation Steps:</b></summary>
+
 1. *Add a **ShoulderLocalizationManager** Scritp to the Scene.*
 2. *Add an **AudioSource** to this object that has **ShoulderLocalizationManager** attached.*
 3. *Attach the main camera of the scene to the `Main Camera` Field.*
@@ -176,12 +187,14 @@ The **LiveListenHelperManager** Script is used for this feature. It should be at
 
 `StopUsingLiveListenHelper()`: This function stops using the Live Listen Helper by switching back the **AudioListener** used and stops the effect of the Live Listen Helper.
 
-**Implementation Steps:**
+<details><summary><b>Implementation Steps:</b></summary>
+
 1. *Instantiate a ball (or other grabbable object of your choice) in the Scene, and attach **LiveListenHelperManager** Scritp to the ball/object.*
 2. *Add all the **AudioSources** to be affected by the Live Listen Helper feature to the `AudioSourceList` field.*
 3. *Add an **Audio Listener** to this ball/object.*
 4. *Change the `Cutoff` field if needed.*
 5. *Call `StartUsingLiveListenHelper()` and `StopUsingLiveListenHelper()` as documented above when you want to start and stop using this ball as the Live Listening Tool. One way is to start it when the ball is grabbed and stop when the ball is released (as shown in the video below).*
+</details>
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/001c540c-0072-494e-9e65-dd1ce43be5b3
 
@@ -197,11 +210,13 @@ This feature uses the script **SmartnotificationManager** to control the on and 
 **Public Coroutine**
 `PlaySmartNotification(AudioSource)`: This Coroutine will play the notification sound selected. You need to pass in an AudioSource to play the smart notification. It will not change the original AudioClip attached to the AudioSource.
 
-**Implementation Steps:**
+<details><summary><b>Implementation Steps:</b></summary>
+
 1. *Add a **SmartNotificationManager** Script to the scene.*
 2. *If you want to use a notification sound other than the default notification clip, then add it to the `Notification Clip` Field.*
 3. *Use `ToggleSmartNotification` to toggle the Smart Notification Feature on or off.*
 4. *When playing a sound where you want a notification played before the sound, start the `PlaySmartNotification` Coroutine with the **AudioSource** passed in as the parameter.*
+</details>
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/c906ed4a-8ba2-4d19-bdf2-f7327c4e7296
 
@@ -219,12 +234,14 @@ This feature is managed by the Script CustomFeedbackManager. It currently suppor
 
 `PlayIncorrectFeedbackSound()`: This function loads and plays the correct notification sound from the audio source linked to the script.
 
-**Implementation Steps:**
+<details><summary><b>Implementation Steps:</b></summary>
+
 1. *Add a **CustomFeedbackManager** Script to the Scene.*
 2. *Enter the List of the file names for the correct and incorrect feedback.*
 3. *Enter the path to the folder that contains all the feedback sound files.*
 4. *Add the **AudioSource** where the feedback sounds are supposed to be played to the `Audio Source` field.*
 5. *To change the feedback sounds used, use the `SelectCorrectFeedback()` and `SelectIncorrectFeedback()` as documented above.*
 6. *To play the feedback sounds, use `PlayCorrectFeedbackSound()` or `PlayIncorrectFeedbackSound()` as documented above.*
+</details>
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/9c376886-3e9f-4214-9ef1-9cd5c5dcda82
