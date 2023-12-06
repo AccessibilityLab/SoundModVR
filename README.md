@@ -10,20 +10,20 @@ This is a Unity Toolkit that contains nine features for Sound Customization for 
 This is the list of features. They are divided into 4 categories - ***Prioritization, Sound Parameter Changes, Spatial Assistance, and Add-on Sounds***. Each feature should work independently, and some features could work together.
 ### 3.1 Prioritization
 [**Group Prioritization**](#group-prioritization): When having multiple groups of sounds, focus on a specific group and lower sounds of all other groups.<br />
-**Keyword Prioritization**: Set specific keywords you're interested in, and the program will play a notification and increase speech volume when it's played.<br />
-**Speech Prioritization**: Lower environment sounds during speech.
+[**Keyword Prioritization**](#keyword-prioritization): Set specific keywords you're interested in, and the program will play a notification and increase speech volume when it's played.<br />
+[**Speech Prioritization**](speech-prioritization): Lower environment sounds during speech.
 
 ### 3.2 Sound Parameter Changes
-**Volume and Pitch Adjustment**: Set volume and pitch both for the system and for individual sound sources in the environment.<br />
-**Speech Speed Adjustment**: Adjust speed for individual speech sound sources.
+[**Volume and Pitch Adjustment**](volume-and-pitch-adjustment): Set volume and pitch both for the system and for individual sound sources in the environment.<br />
+[**Speech Speed Adjustment**](speech-speed-adjustment): Adjust speed for individual speech sound sources.
 
 ### 3.3 Spatial Assistance
-**Shoulder Localization Helper**: To alert you when an important sound is played/ by your request, and if it’s on your left/right.<br />
-**Live Listen Helper**: Single out sounds when you move them close to sound sources.
+[**Shoulder Localization Helper**](shoulder-localization-helper): To alert you when an important sound is played/ by your request, and if it’s on your left/right.<br />
+[**Live Listen Helper**](live-listen-helper): Single out sounds when you move them close to sound sources.
 
 ### 3.4 Add-on Sounds
-**Smart Notification**: Playing a notification before an important sound, like speech or feedback.<br />
-**Custom Feedback Sound**: Change the feedback sounds in the system to your individual preferences/needs.
+[**Smart Notification**](smart-notification): Playing a notification before an important sound, like speech or feedback.<br />
+[**Custom Feedback Sound**](custom-feedback-sound): Change the feedback sounds in the system to your individual preferences/needs.
 
 ## 4. Usage Guide
 <div id="group-prioritization"></div>
@@ -47,6 +47,8 @@ Each **SpeechSource** should have a corresponding **AudioSource**, and initially
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/a0d4451d-3a63-47f3-967a-7e1bd93900ec
 
+<div id="keyword-prioritization"></div>
+
 ### 2) Keyword Prioritization
 See example in Keyword Prioritization Example Scene. <br/>
 The **KeywordDetectionManager** is used to control this feature. It has a property, `keywords`, which is a List of strings that identify the keywords to look out for. <br/>
@@ -68,6 +70,7 @@ It also allows you to set a notification sound by setting the `Notification Clip
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/fb1c8767-987c-4594-a488-c216781977a9
 
+<div id="speech-prioritization"></div>
 
 ### 3) Speech Prioritization
 See example in Speech Prioritization Example Scene. <br/>
@@ -95,6 +98,8 @@ Before the character speech, call `LowerEnvSoundsVolume()`, and after the charac
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/1ef3bbd5-ab21-4c19-9ec8-122664c0a60c
 
+<div id="volume-and-pitch-adjustment"></div>
+
 ### 4) Volume and Pitch Adjustment
 See example in Volume and Pitch Adjustment Example Scene. <br/>
 The **VolPitchShiftManager** is used to control this feature. It has several properties to set before use, including `Audio User Group`, `Audio Sources List`, `Pitch Label`, and `Volume Label`. The Audio Mixer Group allows you to set the audio mixer to be used. The Audio Sources List compiles all audio sources to be impacted by this volume and pitch control, with an empty or unset list resulting in system-wide changes. The Pitch and Volume Labels are the exposed parameters from the audio mixer. To do so, right-click on the pitch and volume in the audio mixer and select “Expose “” to script”. These will then be accessible in exposed parameters. <br/>
@@ -118,6 +123,8 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/db57b924-ec4e-42ed-a51b-16bb0f2d0f06
 
+<div id="speech-speed-adjustment"></div>
+
 ### 5) Speech Speed Adjustment
 See example in Speech Speed Adjustment Example Scene. <br/>
 The **SpeechSpeedManager** is used to control this feature. It requires you to assign an **AudioSource** to the script in the `Audio Source` field, otherwise, it will assume it is attached to a game object with an **AudioSource**. You also need to set the audio mixer to be used in the Master Mixer field. You then need to expose the Pitch element in the AudioMixer and add the parameter name of the pitch parameter to the `audioMixerPitchLabel` field.
@@ -137,6 +144,7 @@ The **SpeechSpeedManager** is used to control this feature. It requires you to a
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/821f3831-8010-4157-8ffe-ceb5c6d27ae6
 
+<div id="shoulder-localization-helper"></div>
 
 ### 6) Shoulder Localization Helper
 See example in Shoulder Localization Helper Example Scene. <br/>
@@ -157,6 +165,7 @@ The **ShoulderLocalizationManager** Script is used for this feature. It requires
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/45d2db36-bea6-479f-a17e-a2fd176c55c1
 
+<div id="live-listen-helper"></div>
 
 ### 7) Live Listen Helper
 See example in Live Listen Helper Example Scene. <br/>
@@ -176,6 +185,7 @@ The **LiveListenHelperManager** Script is used for this feature. It should be at
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/001c540c-0072-494e-9e65-dd1ce43be5b3
 
+<div id="smart-notification"></div>
 
 ### 8) Smart Notification
 See example in Smart Notification Example Scene. <br/>
@@ -194,6 +204,8 @@ This feature uses the script **SmartnotificationManager** to control the on and 
 4. *When playing a sound where you want a notification played before the sound, start the `PlaySmartNotification` Coroutine with the **AudioSource** passed in as the parameter.*
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/c906ed4a-8ba2-4d19-bdf2-f7327c4e7296
+
+<div id="custom-feedback-sound"></div>
 
 ### 9) Custom Feedback Sound
 This feature is managed by the Script CustomFeedbackManager. It currently supports a correct and incorrect feedback sound. The developer should input the file names of the correct and incorrect feedback sounds in the `Correct/Incorrect Feedback Name List`. Then, the developer should put the filename of the default feedback sounds into `correctFeedbackName` and `incorrectFeedbackName` fields. The default would be the first one on the corresponding Feedback Name List. The `path` field is used for providing the path to the folder that contains all the notification sound files. The `audioSource` field will be used to play the feedback sounds.
