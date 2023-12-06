@@ -14,7 +14,7 @@ This is the list of features. They are divided into 4 categories - ***Prioritiza
 **Speech Prioritization**: Lower environment sounds during speech.
 
 ### 3.2 Sound Parameter Changes
-**Volume and Pitch Management**: Set volume and pitch both for the system and for individual sound sources in the environment.<br />
+**Volume and Pitch Adjustment**: Set volume and pitch both for the system and for individual sound sources in the environment.<br />
 **Speech Speed Adjustment**: Adjust speed for individual speech sound sources.
 
 ### 3.3 Spatial Assistance
@@ -94,7 +94,7 @@ Before the character speech, call `LowerEnvSoundsVolume()`, and after the charac
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/1ef3bbd5-ab21-4c19-9ec8-122664c0a60c
 
 ### 4) Volume and Pitch Adjustment
-See example in Volume and Pitch Management Example Scene. <br/>
+See example in Volume and Pitch Adjustment Example Scene. <br/>
 The **VolPitchShiftManager** is used to control this feature. It has several properties to set before use, including `Audio User Group`, `Audio Sources List`, `Pitch Label`, and `Volume Label`. The Audio Mixer Group allows you to set the audio mixer to be used. The Audio Sources List compiles all audio sources to be impacted by this volume and pitch control, with an empty or unset list resulting in system-wide changes. The Pitch and Volume Labels are the exposed parameters from the audio mixer. To do so, right-click on the pitch and volume in the audio mixer and select “Expose “” to script”. These will then be accessible in exposed parameters. <br/>
 
 **Public Functions**: 
