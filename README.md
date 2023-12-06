@@ -11,19 +11,19 @@ This is the list of features. They are divided into 4 categories - ***Prioritiza
 ### 3.1 Prioritization
 [**Group Prioritization**](#group-prioritization): When having multiple groups of sounds, focus on a specific group and lower sounds of all other groups.<br />
 [**Keyword Prioritization**](#keyword-prioritization): Set specific keywords you're interested in, and the program will play a notification and increase speech volume when it's played.<br />
-[**Speech Prioritization**](speech-prioritization): Lower environment sounds during speech.
+[**Speech Prioritization**](#speech-prioritization): Lower environment sounds during speech.
 
 ### 3.2 Sound Parameter Changes
-[**Volume and Pitch Adjustment**](volume-and-pitch-adjustment): Set volume and pitch both for the system and for individual sound sources in the environment.<br />
-[**Speech Speed Adjustment**](speech-speed-adjustment): Adjust speed for individual speech sound sources.
+[**Volume and Pitch Adjustment**](#volume-and-pitch-adjustment): Set volume and pitch both for the system and for individual sound sources in the environment.<br />
+[**Speech Speed Adjustment**](#speech-speed-adjustment): Adjust speed for individual speech sound sources.
 
 ### 3.3 Spatial Assistance
-[**Shoulder Localization Helper**](shoulder-localization-helper): To alert you when an important sound is played/ by your request, and if it’s on your left/right.<br />
-[**Live Listen Helper**](live-listen-helper): Single out sounds when you move them close to sound sources.
+[**Shoulder Localization Helper**](#shoulder-localization-helper): To alert you when an important sound is played/ by your request, and if it’s on your left/right.<br />
+[**Live Listen Helper**](#live-listen-helper): Single out sounds when you move them close to sound sources.
 
 ### 3.4 Add-on Sounds
-[**Smart Notification**](smart-notification): Playing a notification before an important sound, like speech or feedback.<br />
-[**Custom Feedback Sound**](custom-feedback-sound): Change the feedback sounds in the system to your individual preferences/needs.
+[**Smart Notification**](#smart-notification): Playing a notification before an important sound, like speech or feedback.<br />
+[**Custom Feedback Sound**](#custom-feedback-sound): Change the feedback sounds in the system to your individual preferences/needs.
 
 ## 4. Usage Guide
 <div id="group-prioritization"></div>
