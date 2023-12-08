@@ -225,12 +225,12 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 
 ### 9) Custom Feedback Sound
 *(* :thumbsup: *Recommended to use when there are feedback sounds in the program.)* <br />
-This feature is managed by the Script CustomFeedbackManager. It currently supports a correct and incorrect feedback sound. The developer should input the file names of the correct and incorrect feedback sounds in the `Correct/Incorrect Feedback Name List`. Then, the developer should put the filename of the default feedback sounds into `correctFeedbackName` and `incorrectFeedbackName` fields. The default would be the first one on the corresponding Feedback Name List. The `path` field is used for providing the path to the folder that contains all the notification sound files. The `audioSource` field will be used to play the feedback sounds.
+This feature is managed by the Script **CustomFeedbackManager**. It currently supports a correct and incorrect feedback sound. The developer should input the **AudioClip** Files of the correct and incorrect feedback sounds in the `Correct/Incorrect Feedback Clips List`. Then, the developer should put the index of the default feedback sounds into `correctFeedbackIndex` and `incorrectFeedbackIndex` fields. The default indices would be 0. The `audioSource` field will be used to play the feedback sounds. *See some example Feedback sounds in the Sounds-FeedbackSounds folder.*
 
 **Public Functions**
-`SelectCorrectFeedback(int)`: This function sets the correct feedback to the file corresponding to the input index on the `correctFeedbackNameList`.
+`SelectCorrectFeedback(int)`: This function sets the correct feedback index to be the input int.
 
-`SelectIncorrectFeedback(int)`: This function sets the incorrect feedback to the file corresponding to the input index on the `incorrectFeedbackNameList`.
+`SelectIncorrectFeedback(int)`: This function sets the incorrect feedback index to be the input int.
 
 `PlayCorrectFeedbackSound()`: This function loads and plays the correct notification sound from the audio source linked to the script.
 
@@ -239,10 +239,9 @@ This feature is managed by the Script CustomFeedbackManager. It currently suppor
 <details><summary><b>Implementation Steps:</b></summary>
 
 1. *Add a **CustomFeedbackManager** Script to the Scene.*
-2. *Enter the List of the file names for the correct and incorrect feedback.*
-3. *Enter the path to the folder that contains all the feedback sound files.*
-4. *Add the **AudioSource** where the feedback sounds are supposed to be played to the `Audio Source` field.*
-5. *To change the feedback sounds used, use the `SelectCorrectFeedback()` and `SelectIncorrectFeedback()` as documented above.*
+2. *Enter the List of the files for the correct and incorrect feedback.*
+4. *Add the **AudioSource** where the feedback sounds should be played to the `Audio Source` field.*
+5. *To enable the user to change the feedback sounds used, use the `SelectCorrectFeedback()` and `SelectIncorrectFeedback()` as documented above.*
 6. *To play the feedback sounds, use `PlayCorrectFeedbackSound()` or `PlayIncorrectFeedbackSound()` as documented above.*
 </details>
 
