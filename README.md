@@ -76,8 +76,8 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 
 <div id="speech-prioritization"></div>
 
-### 3) Speech Prioritization
-*(* :thumbsup: *Recommended to use in situations where character speech and environment sounds/background music are concurrent.)* <br />
+### 3) Sound Prioritization
+*(* :thumbsup: *Recommended to use in situations where character speech/ important sound and environment sounds/background music are concurrent.)* <br />
 The **SpeechPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Environment Mixer`, the `Env Mixer Vol Label`, and the `Character Audio Source List`. The environment mixer is the audio mixer for the environment sounds. The Env Mixer Vol Label is the exposed parameter from the environment audio mixer. To do this, right-click on the volume in the audio mixer inspector and select “Expose “” to script”. It will then be accessible in exposed parameters. The character audio source list contains all of the character audio sources to keep track of. <br/>
 Before the character speech, call `LowerEnvSoundsVolume()`, and after the character finishes speaking, run the `RecoverEnvSoundsVolume` Coroutine, both described below.
 
