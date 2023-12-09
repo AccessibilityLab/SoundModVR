@@ -11,7 +11,7 @@ This is the list of features. They are divided into 4 categories - ***Prioritiza
 ### 3.1 Prioritization
 [**Group Prioritization**](#group-prioritization): When having multiple groups of sounds, focus on a specific group and lower sounds of all other groups.<br />
 [**Keyword Prioritization**](#keyword-prioritization): Set specific keywords you're interested in, and the program will play a notification and increase speech volume when it's played.<br />
-[**Speech Prioritization**](#speech-prioritization): Lower environment sounds during speech.
+[**Sound Prioritization**](#sound-prioritization): Lower environment sounds during speech/important sounds.
 
 ### 3.2 Sound Parameter Changes
 [**Volume and Pitch Adjustment**](#volume-and-pitch-adjustment): Set volume and pitch both for the system and for individual sound sources in the environment.<br />
@@ -74,7 +74,7 @@ It also allows you to set a notification sound by setting the `Notification Clip
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/fb1c8767-987c-4594-a488-c216781977a9
 
-<div id="speech-prioritization"></div>
+<div id="sound-prioritization"></div>
 
 ### 3) Sound Prioritization
 *(* :thumbsup: *Recommended to use in situations where character speech/ important sound and environment sounds/background music are concurrent.)* <br />
