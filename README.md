@@ -204,7 +204,7 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 
 ### 8) Smart Notification
 *(* :thumbsup: *Recommended to use before important sound message is played.)* <br />
-This feature uses the script **SmartnotificationManager** to control the on and off, and the sounds played as the smart notification. The script has a public boolean variable `smartNotificationOn` to indicate whether the smart notification feature is on or off. The developer can also customize the notification clip in the Notification Clip field, with the default provided in the toolkit. Before playing an important sound, the developer could call `PlaySmartNotification()`.
+This feature uses the script **SmartNotificationManager** to control the on and off, and the sounds played as the smart notification. The script has a public boolean variable `smartNotificationOn` to indicate whether the smart notification feature is on or off. The developer also need to put the notification clip in the Notification Clip field, with the default provided in the toolkit in `Sounds->notif1_inTheEnd.mp3`. Before playing an important sound, the developer could call `PlaySmartNotification()`.
 
 **Public Functions**
 `ToggleSmartNotification(bool)`: This function will turn the Smart notification feature on/off by changing the public flag `smartNotificationOn` variable.
@@ -215,7 +215,7 @@ This feature uses the script **SmartnotificationManager** to control the on and 
 <details><summary><b>Implementation Steps:</b></summary>
 
 1. *Add a **SmartNotificationManager** Script to the scene.*
-2. *If you want to use a notification sound other than the default notification clip, then add it to the `Notification Clip` Field.*
+2. *Add the default notification clip in `Sounds->notif1_inTheEnd.mp3` or another clip of the developer's choice into the `Notification Clip` Field.*
 3. *Use `ToggleSmartNotification` to toggle the Smart Notification Feature on or off.*
 4. *When playing a sound where you want a notification played before the sound, start the `PlaySmartNotification` Coroutine with the **AudioSource** passed in as the parameter.*
 </details>
@@ -240,7 +240,7 @@ This feature is managed by the Script **CustomFeedbackManager**. It currently su
 <details><summary><b>Implementation Steps:</b></summary>
 
 1. *Add a **CustomFeedbackManager** Script to the Scene.*
-2. *Enter the List of the files for the correct and incorrect feedback.*
+2. *Enter the List of the **AudioClips** for the correct and incorrect feedback.*
 4. *Add the **AudioSource** where the feedback sounds should be played to the `Audio Source` field.*
 5. *To enable the user to change the feedback sounds used, use the `SelectCorrectFeedback()` and `SelectIncorrectFeedback()` as documented above.*
 6. *To play the feedback sounds, use `PlayCorrectFeedbackSound()` or `PlayIncorrectFeedbackSound()` as documented above.*
