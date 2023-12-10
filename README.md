@@ -161,6 +161,7 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 The **ShoulderLocalizationManager** Script is used for this feature. It requires you to attach the main camera of the player to the `Main Camera` field. It requires you to assign an **AudioSource** to the script in the `Audio Source` field, otherwise, it will assume it is attached to a game object with an **AudioSource**. One optional field is `targetAudioSource`, for the case where there's only one target. Two additional optional fields are `leftAudioClip` and `rightAudioClip`, where the developer can input their own direction indicator than the default sounds.
 
 **Public Functions**
+
 `PlayLocationAlert(Vector3)`: This function takes in the location of the target sound source location, determines if that target sound source is on the left side or right side of the camera, and plays the corresponding audio clip using the detected **AudioSoruce** in this script.
 
 `PlayAlertWithDefinedTarget()`: This function takes in no parameter, and will call **PlayLocationAlert** using the optional `targetAudioSource` field as the sound source.
