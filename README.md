@@ -60,15 +60,16 @@ It also allows you to set a notification sound by setting the `Notification Clip
 
 `AddOrSubtractKeyword(bool isAdding, string keyword)`: This function allows users to add a keyword to the keywords list or remove them, based on the value of the `isAdding` variable. If this variable is True, then this function will add the keyword. If it is False, the keyword will be removed. There is no return from this function.
 
+**Public Coroutines**:
 
-`detectKeywordAndPlay(string script, SpeechSource speechSource, AudioClip audioClip)`: This function will start a Coroutine. The coroutine locates keywords in the script and plays a notification sound. If the sentence that the keyword is a part of has lowered volume because of group prioritization, it also increases the volume of the sentence. When the sentence is done, it reverts to the volume prior to the keyword being detected. The inputs include the script, wherein the keyword might be detected, the speechSource, and the audio clip, both of which will be used to output the sounds. There is no return from this function.
+`detectKeywordAndPlay(string script, SpeechSource speechSource, AudioClip audioClip)`: This coroutine locates keywords in the script and plays a notification sound. If the sentence that the keyword is a part of has lowered volume because of group prioritization, it also increases the volume of the sentence. When the sentence is done, it reverts to the volume before the keyword is detected. The inputs include the script, wherein the keyword might be detected, the speechSource, and the audio clip, both of which will be used to output the sounds. There is an IEnumerator returned.
 
 <details><summary><b>Implementation Steps:</b></summary>
 
 1. *Add a **Keyword Detection Manager** to the scene and attach a **KeywordDetectionManager** Script.*
 2. *To add a keyword, call `AddOrSubtractKeyword()` as documented above.*
-3. *Attach a **SpeechSource** Script to the **AudioSource** that will play the sentences and attach the **AudioSource** to the **SpeechSource**.*
-4. *When playing a sentence that might contain the keyword and you want to detect it, call the `detectKeywordAndPlay` function with the sentence's script, corresponding **SpeechSource**, and corresponding **AudioClip**.*
+3. *Attach a **SpeechSource** Script to the **AudioSource** that should play the sentences and attach the **AudioSource** to the **SpeechSource**.*
+4. *When playing a sentence that might contain the keyword and you want to detect it, instead of play it with the audio source, start a `detectKeywordAndPlay` coroutine with the sentence's script, corresponding **SpeechSource**, and corresponding **AudioClip**.*
 </details>
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/fb1c8767-987c-4594-a488-c216781977a9
