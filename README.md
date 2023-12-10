@@ -54,7 +54,7 @@ https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/asse
 ### 2) Keyword Prioritization
 *(* :thumbsup: *Recommended to use in situations where important speech is delivered.)* <br />
 The **KeywordDetectionManager** is used to control this feature. It has a property, `keywords`, which is a List of strings that identify the keywords to look out for. <br/>
-It also allows you to set a notification sound by setting the `Notification Clip` variable. <br/>
+It also allows you to set a notification sound by setting the `Notification Clip` variable. You could use the notification clip in Sounds->notif1_inTheEnd.mp3 or any sound clip for the notification clip.<br/>
 
 **Public Functions**: 
 
@@ -66,10 +66,10 @@ It also allows you to set a notification sound by setting the `Notification Clip
 
 <details><summary><b>Implementation Steps:</b></summary>
 
-1. *Add a **Keyword Detection Manager** to the scene and attach a **KeywordDetectionManager** Script.*
-2. *To add a keyword, call `AddOrSubtractKeyword()` as documented above.*
+1. *Add a **Keyword Detection Manager** to the scene and attach a **KeywordDetectionManager** Script. Select the `notification clip`.*
+2. *To enable the user to add a keyword, call `AddOrSubtractKeyword()` as documented above.*
 3. *Attach a **SpeechSource** Script to the **AudioSource** that should play the sentences and attach the **AudioSource** to the **SpeechSource**.*
-4. *When playing a sentence that might contain the keyword and you want to detect it, instead of play it with the audio source, start a `detectKeywordAndPlay` coroutine with the sentence's script, corresponding **SpeechSource**, and corresponding **AudioClip**.*
+4. *When playing a sentence that might contain the keyword and you want to detect it, instead of playing it with the audio source, start a `detectKeywordAndPlay` coroutine with the sentence's script, corresponding **SpeechSource**, and corresponding **AudioClip**.*
 </details>
 
 https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/fb1c8767-987c-4594-a488-c216781977a9
