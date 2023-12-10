@@ -97,7 +97,7 @@ Before the character speech, call `LowerEnvSoundsVolume()`, and after the charac
 2. *Create a new Mixer in the **AudioMixer** tab, and for all **AudioSoruce** that should be considered the Environment Sound, assign their Mixer group to be this new mixer.*
 3. *Go to the Inspector of the music mixer, right-click on **Volume**, and select "Expose ... to script"*
 4. *In the "Exposed parameters" list in the Audio Mixer tab, get the name of the newly created parameter.*
-5. *Assign the new Mixer to the `Environment_Mixer` field in **SpeechPrioritizationManager**, and input the name of the new parameter to `Env Moxer Vol Label` field.*
+5. *Assign the new Mixer to the `Environment_Mixer` field in **SpeechPrioritizationManager**, and input the name of the new parameter to `Env Mixer Vol Label` field.*
 6. *Add all **AudioSource** of Character speech to the `Character Audio Source List`.*
 7. *Before the character speech, call `lowerEnvSoundsVolume()`, and after the character finishes speaking, run the `RecoverEnvSoundsVolume` Coroutine, both documented above.*
 </details>
