@@ -16,12 +16,6 @@ public class ShoulderLocalizationManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        if (leftAudioClip == null) {
-            leftAudioClip = Resources.Load<AudioClip>("Assistant/Left");
-        }
-        if (rightAudioClip == null) { 
-            rightAudioClip = Resources.Load<AudioClip>("Assistant/Right");
-        }
     }
 
     // Update is called once per frame
@@ -39,18 +33,26 @@ public class ShoulderLocalizationManager : MonoBehaviour
         if (angle > 0)
         {
             audioSource.clip = leftAudioClip;
-            /*if (captionField != null) {
-                captionField.ShowCaptionForDuration("To your left.", audioSource.clip.length + 1);
-            }*/
-            audioSource.Play();
+            if (leftAudioClip == null)
+            {
+                Debug.LogError("Left Audio Clip is null");
+            }
+            else
+            {
+                audioSource.Play();
+            }
         }
         else
         {
             audioSource.clip = rightAudioClip;
-            /*if (captionField != null) {
-                captionField.ShowCaptionForDuration("To your right.", audioSource.clip.length + 1);
-            }*/
-            audioSource.Play();
+            if (rightAudioClip == null)
+            {
+                Debug.LogError("Right Audio Clip is null");
+            }
+            else
+            {
+                audioSource.Play();
+            }
         }   
     }
 

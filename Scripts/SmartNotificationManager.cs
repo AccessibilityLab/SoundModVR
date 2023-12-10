@@ -10,9 +10,6 @@ public class SmartNotificationManager : MonoBehaviour
     void Start()
     {
         smartNotificationOn = false;
-        if (notificationClip == null) {
-            notificationClip = Resources.Load<AudioClip>("Notifications/notif1_inTheEnd");
-        }
     }
 
     // Update is called once per frame
@@ -25,8 +22,16 @@ public class SmartNotificationManager : MonoBehaviour
         if (smartNotificationOn) { 
             AudioClip prevClip = audioSource.clip;
             audioSource.clip = notificationClip;
-            audioSource.Play();
-            yield return new WaitForSeconds(notificationClip.length);
+            if (notificationClip == null)
+            {
+                Debug.LogError("Notification Clip is null");
+                yield return new WaitForSeconds(0);
+            }
+            else
+            {
+                audioSource.Play();
+                yield return new WaitForSeconds(notificationClip.length);
+            }
             audioSource.clip = prevClip;
         }
     }

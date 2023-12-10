@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class SpeechPrioritizationManager : MonoBehaviour
+public class SoundPrioritizationManager : MonoBehaviour
 {
     public AudioMixer Environment_Mixer;
     public string envMixerVolLabel;
