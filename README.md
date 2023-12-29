@@ -154,7 +154,10 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/ee1cd1
 
 ### 5) Speech Speed Adjustment
 *(* :thumbsup: *Recommended to use for character/system speech that contains important information.)* <br />
-The **SpeechSpeedManager** is used to control this feature. It requires you to assign an **AudioSource** to the script in the `Audio Source` field, otherwise, it will assume it is attached to a game object with an **AudioSource**. You also need to set the audio mixer to be used in the Master Mixer field. You then need to expose the Pitch element in the AudioMixer and add the parameter name of the pitch parameter to the `audioMixerPitchLabel` field.
+ :eyes:  :eyes:  :eyes: See **SpeechSpeedAdjustmentExampleScene** for example.<br/><br/>
+The **SpeechSpeedManager** is used to control this feature.<br/>
+- It requires you to assign an **AudioSource** to the script in the `Audio Source` field, otherwise, it will assume it is attached to a game object with an **AudioSource**.<br/>
+- You also need to set the audio mixer to be used in the Master Mixer field. You then need to expose the Pitch element. To do so, right-click on the pitch in the audio mixer group controller and select “Expose “” to script”. These will then be accessible in exposed parameters. Then, add the parameter name of the pitch parameter to the `Audio Mixer Pitch Label` field.<br/>
 
 **Public Functions**
 
@@ -162,13 +165,14 @@ The **SpeechSpeedManager** is used to control this feature. It requires you to a
 
 <details><summary><b>Implementation Steps:</b></summary>
 
-1. *Add a **SpeechSpeedAdjustmentManager** in the Scene.*
+1. *Add a **SpeechSpeedAdjustmentManager** Script to the Scene.*
 2. *Assign the **AudioSoruce** that should be controlled by this feature to the `Audio Source` field.*
-3. *Create a new Mixer in the AudioMixer tab, and for the **AudioSoruce** that should be controlled by this feature, assign its Mixer group to be this new mixer.*
-4. *Go to the Inspector of the music mixer, right-click on **Pitch** in **Pitch Shifter**, and select "Expose ... to script" for both.*
+3. *Create a new Mixer Group in the AudioMixer tab, and for the **AudioSoruce** that should be controlled by this feature, assign its Mixer group to be this new mixer group.*
+4. *Go to the Inspector of the audio mixer and add **Pitch shifter** using **Add Effect**. Right-click on **Pitch** in **Pitch Shifter**, and select "Expose ... to script".*
 5. *In the "Exposed parameters" list in the Audio Mixer tab, get the name of the newly created parameters.*
-6. *Enter the new parameter names in the `Audio Mixer Pitch label` fields in the **SpeechSpeedAdjustmentManager** Script.*
-7. *Use the `ShiftSpeed()` function documented above to shift the speed of the character's speech.*
+6. Assign the Mixer that contains this new mixer group to the field `Audio Mixer`.
+7. *Enter the new parameter names in the `Audio Mixer Pitch Label` fields in the **SpeechSpeedAdjustmentManager** Script.*
+8. *Use the `ShiftSpeed()` function documented above to shift the speed of the character's speech.*
 </details>
 
 
@@ -214,7 +218,7 @@ The **LiveListenHelperManager** Script is used for this feature. It should be at
 
 <details><summary><b>Implementation Steps:</b></summary>
 
-1. *Instantiate a ball (or other grabbable object of your choice) in the Scene, and attach **LiveListenHelperManager** Scritp to the ball/object.*
+1. *Instantiate a ball (or other grabbable object of your choice) in the Scene, and attach **LiveListenHelperManager** Script to the ball/object.*
 2. *Add all the **AudioSources** to be affected by the Live Listen Helper feature to the `AudioSourceList` field.*
 3. *Add an **Audio Listener** to this ball/object.*
 4. *Change the `Cutoff` field if needed.*
