@@ -6,18 +6,15 @@ using UnityEngine.Audio;
 
 public class SoundPrioritizationManager : MonoBehaviour
 {
-    public AudioMixer Environment_Mixer;
-    public string envMixerVolLabel;
+    public AudioMixer audioMixer;
+    public string envVolLabel;
     public List<AudioSource> characterAudioSourceList;
-    
-    [System.NonSerialized]
-    public bool lowerEnvOnSpeechSetting = false;
-    public IEnumerator recoverEnvSoundsVolumeCoroutine;
+    public bool lowerEnvOnSpeechSetting = true;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        recoverEnvSoundsVolumeCoroutine = recoverEnvSoundsVolume();
     }
 
     // Update is called once per frame
@@ -32,7 +29,7 @@ public class SoundPrioritizationManager : MonoBehaviour
         {
             foreach (AudioSource audioSource in characterAudioSourceList) {
                 if (audioSource.isPlaying) {
-                    Environment_Mixer.SetFloat(envMixerVolLabel, -30);
+                    audioMixer.SetFloat(envVolLabel, -30);
                     break;
                 }
             }
@@ -43,20 +40,25 @@ public class SoundPrioritizationManager : MonoBehaviour
             {
                 if (audioSource.isPlaying)
                 {
-                    Environment_Mixer.SetFloat(envMixerVolLabel, 0);
+                    audioMixer.SetFloat(envVolLabel, 0);
                     break;
                 }
             }
         }
     }
 
-    public void lowerEnvSoundsVolume()
+    public void lowerEnvSoundsVolume(AudioSource audioSource)
     {
-        Environment_Mixer.SetFloat(envMixerVolLabel, -30);
+        if (lowerEnvOnSpeechSetting)
+        {
+            audioMixer.SetFloat(envVolLabel, -30);
+            StartCoroutine(recoverEnvSoundsVolume(audioSource.clip.length));
+        }
     }
 
-    IEnumerator recoverEnvSoundsVolume()
+    IEnumerator recoverEnvSoundsVolume(float waitTime)
     {
+        yield return new WaitForSeconds(waitTime);
         bool stopped = true;
         while (true)
         {
@@ -72,7 +74,7 @@ public class SoundPrioritizationManager : MonoBehaviour
             }
             if (stopped)
             {
-                Environment_Mixer.SetFloat(envMixerVolLabel, 0);
+                audioMixer.SetFloat(envVolLabel, 0);
                 break;
             }
         }
