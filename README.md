@@ -83,7 +83,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/98a22b
 
 ### 3) Sound Prioritization
 *(* :thumbsup: *Recommended to use in situations where character speech/ important sound and environment sounds/background music are concurrent.)* <br />
-See **SoundPrioritizationManagerExampleScene** for example, note that the AudioMixers are not linked up in the example scenes.<br/>
+ :eyes: See **SoundPrioritizationManagerExampleScene** for example.<br/>
 The **SoundPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Audio Mixer`, the `Env Vol Label`, the `Character Audio Source List`, and the `Lower Env On Speech Setting`.<br/>
 - The `Audio Mixer` is the audio mixer that contains the mixer group for the environment sounds.<br/>
 - The `Env Vol Label` is the exposed parameter from the environment audio mixer group. To do this, right-click on the volume in the audio mixer inspector of that audio mixer group and select “Expose “” to script”. It will then be accessible in exposed parameters.<br/>
@@ -117,7 +117,11 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/89e8aa
 
 ### 4) Volume and Pitch Adjustment
 *(* :thumbsup: *Recommended to use for any sound, especially sounds on the lower/higher registry.)* <br />
-The **VolPitchShiftManager** is used to control this feature. It has several properties to set before use, including `Audio User Group`, `Audio Sources List`, `Pitch Label`, and `Volume Label`. The Audio Mixer Group allows you to set the audio mixer to be used. The Audio Sources List compiles all audio sources to be impacted by this volume and pitch control, with an empty or unset list resulting in system-wide changes. The Pitch and Volume Labels are the exposed parameters from the audio mixer. To do so, right-click on the pitch and volume in the audio mixer and select “Expose “” to script”. These will then be accessible in exposed parameters. <br/>
+ :eyes: See **VolPitchShiftExampleScene** for example.<br/>
+The **VolPitchShiftManager** is used to control this feature. It has several properties to set before use, including `Audio Mixer Group`, `Audio Sources List`, `Pitch Label`, and `Volume Label`.<br/>
+- The Audio Mixer Group allows you to set the audio mixer group to be used.
+- The Audio Sources List compiles all audio sources to be impacted by this volume and pitch control, with an empty or unset list resulting in system-wide changes.
+- The Pitch and Volume Labels are the exposed parameters from the audio mixer. To do so, right-click on the pitch and volume in the audio mixer and select “Expose “” to script”. These will then be accessible in exposed parameters. <br/>
 
 **Public Functions**: 
 
@@ -129,8 +133,8 @@ The **VolPitchShiftManager** is used to control this feature. It has several pro
 
 1. *Add a **VolPitchShiftManager** Script to the Scene.*
 3. *Add all **AudioSources** affected by this shift to the `Audio Sources List`. For system-level control, you can leave this field empty.*
-2. *Create a new Mixer in the AudioMixer tab, and for all **AudioSoruce** that should be controlled by this feature, assign their Mixer group to be this new mixer.*
-4. *Go to the Inspector of the music mixer, right-click on **Volume** in **Attenuation** and **Pitch** in **Pitch Shifter**, and select "Expose ... to script" for both.*
+2. *Create a new Mixer Group in the AudioMixer tab, and for all **AudioSoruce** that should be controlled by this feature, assign their Mixer group to be this new mixer group. Also, assign this to the `Audio Mixer Group` field in **VolPitchShiftManager***
+4. *Go to the Inspector of the music mixer and add **Pitch shifter** using **Add Effect**. Then, right-click on **Volume** in **Attenuation** and **Pitch** in **Pitch Shifter**, and select "Expose ... to script" for both.*
 4. *In the "Exposed parameters" list in the Audio Mixer tab, get the names of the newly created parameters.*
 5. *Enter the new parameter names in the `Pitch Label` and `Volume Label` fields in the **VolPitchShiftManager** Script.*
 6. *To shift the volume and pitch, use `ShiftPitch()` and `ShiftVolume()` documented above.*
