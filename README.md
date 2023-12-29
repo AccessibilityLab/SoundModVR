@@ -83,28 +83,30 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/98a22b
 
 ### 3) Sound Prioritization
 *(* :thumbsup: *Recommended to use in situations where character speech/ important sound and environment sounds/background music are concurrent.)* <br />
-The **SoundPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Environment Mixer`, the `Env Mixer Vol Label`, and the `Character Audio Source List`. The environment mixer is the audio mixer for the environment sounds. The Env Mixer Vol Label is the exposed parameter from the environment audio mixer. To do this, right-click on the volume in the audio mixer inspector and select “Expose “” to script”. It will then be accessible in exposed parameters. The character audio source list contains all of the character audio sources to keep track of. <br/>
-Before the character speech, call `LowerEnvSoundsVolume()`, and after the character finishes speaking, run the `RecoverEnvSoundsVolume` Coroutine, both described below.
+See **SoundPrioritizationManagerExampleScene** for example, note that the AudioMixers are not linked up in the example scenes.<br/>
+The **SoundPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Audio Mixer`, the `Env Vol Label`, the `Character Audio Source List`, and the `Lower Env On Speech Setting`.<br/>
+- The `Audio Mixer` is the audio mixer that contains the mixer group for the environment sounds.<br/>
+- The `Env Vol Label` is the exposed parameter from the environment audio mixer group. To do this, right-click on the volume in the audio mixer inspector of that audio mixer group and select “Expose “” to script”. It will then be accessible in exposed parameters.<br/>
+- The `Character Audio Source List` should contain all of the character audio sources to keep track of. <br/>
+- The boolean Lower Env On Speech Setting is default as true. It controls whether the feature will be turned on or off. It can be controlled by the developer, or by the user through ChangeLowerEnvOnSpeechSetting(), as described below.<br/>
+
+Right before the character speech, call `LowerEnvSoundsVolume(audioSource)`, as described below.
 
 **Public Functions**:
 
-`ChangeLowerEnvOnSpeechSetting()`: This takes in the boolean input from the associated toggle. If the input is True, all character audio sources in the list are checked and if any are playing, the volume of the environment is decreased. If the input is False, the environment volume is reset. There is no output.
+`ChangeLowerEnvOnSpeechSetting()`: This takes in the boolean input from the associated toggle. If the input is True, the environment volume will change when character audio is played, and if any are currently playing, the volume of the environment is decreased. If the input is False, the environment volume won't change when character audio is played, and if character audio is currently playing, it will reset the environment volume to normal. There is no output.
 
-`LowerEnvSoundsVolume()`: This sets the environment volume to -30 and gives no output.
-
-**Public Coroutines**:
-
-`recoverEnvSoundsVolume()`: This resets the environment volume once no characters are speaking. There is an IEnumerator returned. 
+`LowerEnvSoundsVolume(AudioSource)`: This takes the input of an AudioSource, which should be the character audio source that is triggering this feature. This lowers the environment volume -30 dB and gives no output.
 
 <details><summary><b>Implementation Steps:</b></summary>
 
 1. *Add a **Sound Prioritization Manager** to the scene and attach a **SoundPrioritizationManager** Script.*
-2. *Create a new Mixer in the **AudioMixer** tab, and for all **AudioSoruce** that should be considered the Environment Sound, assign their Mixer group to be this new mixer.*
-3. *Go to the Inspector of the music mixer, right-click on **Volume**, and select "Expose ... to script"*
+2. *Create a new Mixer Group in the **AudioMixer** tab, and for all **AudioSoruce** that should be considered the Environment Sound, assign their Mixer group to be this new mixer group.*
+3. *Go to the Inspector of the music mixer group controller, right-click on **Attenuation - Volume**, and select "Expose ... to script"*
 4. *In the "Exposed parameters" list in the Audio Mixer tab, get the name of the newly created parameter.*
-5. *Assign the new Mixer to the `Environment_Mixer` field in **SpeechPrioritizationManager**, and input the name of the new parameter to `Env Mixer Vol Label` field.*
+5. *Assign the Mixer that contains the new mixer group to the `Environment_Mixer` field in **SpeechPrioritizationManager**, and input the name of the new parameter to `Env Mixer Vol Label` field.*
 6. *Add all **AudioSource** of Character speech to the `Character Audio Source List`.*
-7. *Before the character speech, call `lowerEnvSoundsVolume()`, and after the character finishes speaking, run the `RecoverEnvSoundsVolume` Coroutine, both documented above.*
+7. *Before the character speech, call `lowerEnvSoundsVolume(AudioSource)`, documented above.*
 </details>
 
 
