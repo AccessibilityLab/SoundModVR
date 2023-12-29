@@ -31,7 +31,7 @@ This is the list of features. They are divided into 4 categories - ***Prioritiza
 
 ### 1) Group Prioritization 
 *(* :thumbsup: *Recommended to use in situations where multiple groups of conversation/sounds are happening concurrently.)* <br />
- :eyes: See **GroupPrioritizationExampleScene** for example.<br/>
+ :eyes:  :eyes:  :eyes: See **GroupPrioritizationExampleScene** for example.<br/><br/>
 The **GroupPrioritizationManager** Script has a property `Group Managers List` where you can add **GroupManager** objects. If these are not assigned, it will automatically search for **GroupManager** in their children Game Objects. <br />
 Each **GroupManager** will have a property `Speech Source List` you can add **SpeechSource** objects into. If these are not assigned, it will automatically search for **SpeechSource** in their children Game Objects.<br />
 Each **SpeechSource** should have a corresponding **AudioSource**, and initially `is Not Focused` is true. The `is Keyword Detected` is used in combination with the Keyword Prioritization Feature.<br />
@@ -57,23 +57,26 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e7726d
 
 ### 2) Keyword Prioritization
 *(* :thumbsup: *Recommended to use in situations where important speech is delivered.)* <br />
+ :eyes:  :eyes:  :eyes: See **GroupPrioritizationExampleScene** for example.<br/><br/>
 The **KeywordDetectionManager** is used to control this feature. It has a property, `keywords`, which is a List of strings that identify the keywords to look out for. <br/>
-It also allows you to set a notification sound by setting the `Notification Clip` variable. You could use the notification clip in Sounds->notif1_inTheEnd.mp3 or any sound clip for the notification clip.<br/>
+It also allows you to set a notification sound by setting the `Notification Clip` variable. You could use the notification clip in `Sounds->notif1_inTheEnd.mp3` or any sound clip for the notification clip.<br/>
 
-**Public Functions**: 
+**Public Functions**:
 
-`AddOrSubtractKeyword(bool isAdding, string keyword)`: This function allows users to add a keyword to the keywords list or remove them, based on the value of the `isAdding` variable. If this variable is True, then this function will add the keyword. If it is False, the keyword will be removed. There is no return from this function.
+`AddKeyword(string keyword)`: This function takes in a string and adds it to the list of keywords. If such a keyword already exists, it will log an error.
+
+`SubtractKeyword(string keyword)`: This function takes in a string and removes it from the list of keywords. If such a keyword is not in the keyword list, it will log an error.
 
 **Public Coroutines**:
 
-`detectKeywordAndPlay(string script, SpeechSource speechSource, AudioClip audioClip)`: This coroutine locates keywords in the script and plays a notification sound. If the sentence that the keyword is a part of has lowered volume because of group prioritization, it also increases the volume of the sentence. When the sentence is done, it reverts to the volume before the keyword is detected. The inputs include the script, wherein the keyword might be detected, the speechSource, and the audio clip, both of which will be used to output the sounds. There is an IEnumerator returned.
+`detectKeywordAndPlay(string script, SpeechSource speechSource)`: This coroutine locates keywords in the script and plays a notification sound. If the sentence that the keyword is a part of has lowered volume because of group prioritization, it also increases the volume of the sentence. When the sentence is done, it reverts to the volume before the keyword is detected. The inputs include the script, wherein the keyword might be detected, and the **SpeechSource** which will be used to output the sounds. There is an IEnumerator returned.
 
 <details><summary><b>Implementation Steps:</b></summary>
 
 1. *Add a **Keyword Detection Manager** to the scene and attach a **KeywordDetectionManager** Script. Select the `notification clip`.*
-2. *To enable the user to add a keyword, call `AddOrSubtractKeyword()` as documented above.*
+2. *To enable the user to add or remove a keyword, call `AddKeyword(string)` and `SubtractKeyword(string)` as documented above.*
 3. *Attach a **SpeechSource** Script to the **AudioSource** that should play the sentences and attach the **AudioSource** to the **SpeechSource**.*
-4. *When playing a sentence that might contain the keyword and you want to detect it, instead of playing it with the audio source, start a `detectKeywordAndPlay` coroutine with the sentence's script, corresponding **SpeechSource**, and corresponding **AudioClip**.*
+4. *When playing a sentence that might contain the keyword and you want to detect it, instead of playing it with the audio source, start a `detectKeywordAndPlay` coroutine with the sentence's script, corresponding **SpeechSource**, and have the corresponding **AudioSource** contain the right **AudioClip**.*
 </details>
 
 
@@ -84,7 +87,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/98a22b
 
 ### 3) Sound Prioritization
 *(* :thumbsup: *Recommended to use in situations where character speech/ important sound and environment sounds/background music are concurrent.)* <br />
- :eyes: See **SoundPrioritizationManagerExampleScene** for example.<br/>
+ :eyes:  :eyes:  :eyes: See **SoundPrioritizationManagerExampleScene** for example.<br/><br/>
 The **SoundPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Audio Mixer`, the `Env Vol Label`, the `Character Audio Source List`, and the `Lower Env On Speech Setting`.<br/>
 - The `Audio Mixer` is the audio mixer that contains the mixer group for the environment sounds.<br/>
 - The `Env Vol Label` is the exposed parameter from the environment audio mixer group. To do this, right-click on the volume in the audio mixer inspector of that audio mixer group and select “Expose “” to script”. It will then be accessible in exposed parameters.<br/>
@@ -118,7 +121,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/89e8aa
 
 ### 4) Volume and Pitch Adjustment
 *(* :thumbsup: *Recommended to use for any sound, especially sounds on the lower/higher registry.)* <br />
- :eyes: See **VolPitchShiftExampleScene** for example.<br/>
+ :eyes:  :eyes:  :eyes: See **VolPitchShiftExampleScene** for example.<br/><br/>
 The **VolPitchShiftManager** is used to control this feature. It has several properties to set before use, including `Audio Mixer Group`, `Audio Sources List`, `Pitch Label`, and `Volume Label`.<br/>
 - The Audio Mixer Group allows you to set the audio mixer group to be used.
 - The Audio Sources List compiles all audio sources to be impacted by this volume and pitch control, with an empty or unset list resulting in system-wide changes.
