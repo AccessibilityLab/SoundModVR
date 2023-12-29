@@ -127,7 +127,7 @@ The **VolPitchShiftManager** is used to control this feature. It has several pro
 
 <details><summary><b>Implementation Steps:</b></summary>
 
-1. *Add a **VolumePitchShiftManager** Script to the Scene.*
+1. *Add a **VolPitchShiftManager** Script to the Scene.*
 3. *Add all **AudioSources** affected by this shift to the `Audio Sources List`. For system-level control, you can leave this field empty.*
 2. *Create a new Mixer in the AudioMixer tab, and for all **AudioSoruce** that should be controlled by this feature, assign their Mixer group to be this new mixer.*
 4. *Go to the Inspector of the music mixer, right-click on **Volume** in **Attenuation** and **Pitch** in **Pitch Shifter**, and select "Expose ... to script" for both.*
