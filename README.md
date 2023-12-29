@@ -4,7 +4,8 @@
 This is a Unity Toolkit that contains nine features for Sound Customization for DHH (Deaf and Hard of Hearing) Users. It is designed with VR development in mind, but it might be used for other development as well.
 
 ## 2. Key Definition
-**Sound Customization**: Changing aspects of the sounds used in the VR app such as shifting frequencies of the sound or prioritizing certain sounds to satisfy the needs of individual DHH users.
+**Sound Customization**: Changing aspects of the sounds used in the VR app such as shifting frequencies of the sound or prioritizing certain sounds to satisfy the needs of individual DHH users.<br />
+**Unity Audio Mixer**: You can access the AudioMixer window from Window->Audio->AudioMixer. For more information about AudioMixer, please see Unity documentation: [AudioMixer](https://docs.unity3d.com/Manual/AudioMixer.html) and [AudioMixer Scripting](https://docs.unity3d.com/ScriptReference/Audio.AudioMixer.html).
 
 ## 3. Features List
 This is the list of features. They are divided into 4 categories - ***Prioritization, Sound Parameter Changes, Spatial Assistance, and Add-on Sounds***. Each feature should work independently, and some features could work together.
@@ -47,7 +48,9 @@ Each **SpeechSource** should have a corresponding **AudioSource**, and initially
 5. *Call `OnSelectedGroupChange()` when the selected group is changed. See the documentation of the function above for more details.*
 </details>
 
-https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/a0d4451d-3a63-47f3-967a-7e1bd93900ec
+
+https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e7726d5b-49cd-4c1e-8964-fd3ffb3185df
+
 
 <div id="keyword-prioritization"></div>
 
@@ -72,37 +75,43 @@ It also allows you to set a notification sound by setting the `Notification Clip
 4. *When playing a sentence that might contain the keyword and you want to detect it, instead of playing it with the audio source, start a `detectKeywordAndPlay` coroutine with the sentence's script, corresponding **SpeechSource**, and corresponding **AudioClip**.*
 </details>
 
-https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/fb1c8767-987c-4594-a488-c216781977a9
+
+https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/98a22bcb-bd05-4966-bc7f-783efe25e694
+
 
 <div id="sound-prioritization"></div>
 
 ### 3) Sound Prioritization
 *(* :thumbsup: *Recommended to use in situations where character speech/ important sound and environment sounds/background music are concurrent.)* <br />
-The **SoundPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Environment Mixer`, the `Env Mixer Vol Label`, and the `Character Audio Source List`. The environment mixer is the audio mixer for the environment sounds. The Env Mixer Vol Label is the exposed parameter from the environment audio mixer. To do this, right-click on the volume in the audio mixer inspector and select “Expose “” to script”. It will then be accessible in exposed parameters. The character audio source list contains all of the character audio sources to keep track of. <br/>
-Before the character speech, call `LowerEnvSoundsVolume()`, and after the character finishes speaking, run the `RecoverEnvSoundsVolume` Coroutine, both described below.
+See **SoundPrioritizationManagerExampleScene** for example, note that the AudioMixers are not linked up in the example scenes.<br/>
+The **SoundPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Audio Mixer`, the `Env Vol Label`, the `Character Audio Source List`, and the `Lower Env On Speech Setting`.<br/>
+- The `Audio Mixer` is the audio mixer that contains the mixer group for the environment sounds.<br/>
+- The `Env Vol Label` is the exposed parameter from the environment audio mixer group. To do this, right-click on the volume in the audio mixer inspector of that audio mixer group and select “Expose “” to script”. It will then be accessible in exposed parameters.<br/>
+- The `Character Audio Source List` should contain all of the character audio sources to keep track of. <br/>
+- The boolean Lower Env On Speech Setting is default as true. It controls whether the feature will be turned on or off. It can be controlled by the developer, or by the user through ChangeLowerEnvOnSpeechSetting(), as described below.<br/>
+
+Right before the character speech, call `LowerEnvSoundsVolume(audioSource)`, as described below.
 
 **Public Functions**:
 
-`ChangeLowerEnvOnSpeechSetting()`: This takes in the boolean input from the associated toggle. If the input is True, all character audio sources in the list are checked and if any are playing, the volume of the environment is decreased. If the input is False, the environment volume is reset. There is no output.
+`ChangeLowerEnvOnSpeechSetting()`: This takes in the boolean input from the associated toggle. If the input is True, the environment volume will change when character audio is played, and if any are currently playing, the volume of the environment is decreased. If the input is False, the environment volume won't change when character audio is played, and if character audio is currently playing, it will reset the environment volume to normal. There is no output.
 
-`LowerEnvSoundsVolume()`: This sets the environment volume to -30 and gives no output.
-
-**Public Coroutines**:
-
-`recoverEnvSoundsVolume()`: This resets the environment volume once no characters are speaking. There is an IEnumerator returned. 
+`LowerEnvSoundsVolume(AudioSource)`: This takes the input of an AudioSource, which should be the character audio source that is triggering this feature. This lowers the environment volume -30 dB and gives no output.
 
 <details><summary><b>Implementation Steps:</b></summary>
 
 1. *Add a **Sound Prioritization Manager** to the scene and attach a **SoundPrioritizationManager** Script.*
-2. *Create a new Mixer in the **AudioMixer** tab, and for all **AudioSoruce** that should be considered the Environment Sound, assign their Mixer group to be this new mixer.*
-3. *Go to the Inspector of the music mixer, right-click on **Volume**, and select "Expose ... to script"*
+2. *Create a new Mixer Group in the **AudioMixer** tab, and for all **AudioSoruce** that should be considered the Environment Sound, assign their Mixer group to be this new mixer group.*
+3. *Go to the Inspector of the music mixer group controller, right-click on **Attenuation - Volume**, and select "Expose ... to script"*
 4. *In the "Exposed parameters" list in the Audio Mixer tab, get the name of the newly created parameter.*
-5. *Assign the new Mixer to the `Environment_Mixer` field in **SpeechPrioritizationManager**, and input the name of the new parameter to `Env Mixer Vol Label` field.*
+5. *Assign the Mixer that contains the new mixer group to the `Environment_Mixer` field in **SpeechPrioritizationManager**, and input the name of the new parameter to `Env Mixer Vol Label` field.*
 6. *Add all **AudioSource** of Character speech to the `Character Audio Source List`.*
-7. *Before the character speech, call `lowerEnvSoundsVolume()`, and after the character finishes speaking, run the `RecoverEnvSoundsVolume` Coroutine, both documented above.*
+7. *Before the character speech, call `lowerEnvSoundsVolume(AudioSource)`, documented above.*
 </details>
 
-https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/1ef3bbd5-ab21-4c19-9ec8-122664c0a60c
+
+https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/89e8aa06-dd85-4c75-89b2-9b9d2013ea3f
+
 
 <div id="volume-and-pitch-adjustment"></div>
 
@@ -127,9 +136,11 @@ The **VolPitchShiftManager** is used to control this feature. It has several pro
 6. *To shift the volume and pitch, use `ShiftPitch()` and `ShiftVolume()` documented above.*
 </details>
 
-https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/a2b2f449-8776-4f9f-9a66-2a1372f41c4c
 
-https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/db57b924-ec4e-42ed-a51b-16bb0f2d0f06
+https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/a00cf925-13d5-4c4f-8bbb-6e6e8681a27f
+
+https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/ee1cd19c-d8b2-4c97-9b69-6915e4e3236c
+
 
 <div id="speech-speed-adjustment"></div>
 
@@ -152,7 +163,9 @@ The **SpeechSpeedManager** is used to control this feature. It requires you to a
 7. *Use the `ShiftSpeed()` function documented above to shift the speed of the character's speech.*
 </details>
 
-https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/821f3831-8010-4157-8ffe-ceb5c6d27ae6
+
+https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e21d8592-825e-46bd-acf3-dd3d57adde21
+
 
 <div id="shoulder-localization-helper"></div>
 
@@ -176,7 +189,9 @@ The **ShoulderLocalizationManager** Script is used for this feature. It requires
 6. *When you want to play the **ShoulderLocalizationManager** alerts, call the function `PlayLocationAlert()` or `PlayAlertWithDefinedTarget()` as documented above.*
 </details>
 
-https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/45d2db36-bea6-479f-a17e-a2fd176c55c1
+
+https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/04f0b5ba-1bca-4f64-8470-417b97290560
+
 
 <div id="live-listen-helper"></div>
 
@@ -198,7 +213,9 @@ The **LiveListenHelperManager** Script is used for this feature. It should be at
 5. *Call `StartUsingLiveListenHelper()` and `StopUsingLiveListenHelper()` as documented above when you want to start and stop using this ball as the Live Listening Tool. One way is to start it when the ball is grabbed and stop when the ball is released (as shown in the video below).*
 </details>
 
-https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/001c540c-0072-494e-9e65-dd1ce43be5b3
+
+https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/fa82c304-8386-4702-9cae-acadb6b5da2e
+
 
 <div id="smart-notification"></div>
 
@@ -220,7 +237,9 @@ This feature uses the script **SmartNotificationManager** to control the on and 
 4. *When playing a sound where you want a notification played before the sound, start the `PlaySmartNotification` Coroutine with the **AudioSource** passed in as the parameter.*
 </details>
 
-https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/c906ed4a-8ba2-4d19-bdf2-f7327c4e7296
+
+https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/b92e57b2-088c-4897-b7a6-51d886151ad1
+
 
 <div id="custom-feedback-sound"></div>
 
@@ -246,4 +265,6 @@ This feature is managed by the Script **CustomFeedbackManager**. It currently su
 6. *To play the feedback sounds, use `PlayCorrectFeedbackSound()` or `PlayIncorrectFeedbackSound()` as documented above.*
 </details>
 
-https://github.com/xinyun-cao/Feature-Playground-Sound-Customization-VR-DHH/assets/144272763/9c376886-3e9f-4214-9ef1-9cd5c5dcda82
+
+https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e1fbfebf-2059-4096-b323-22d097b61f42
+
