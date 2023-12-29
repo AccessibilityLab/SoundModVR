@@ -31,6 +31,7 @@ This is the list of features. They are divided into 4 categories - ***Prioritiza
 
 ### 1) Group Prioritization 
 *(* :thumbsup: *Recommended to use in situations where multiple groups of conversation/sounds are happening concurrently.)* <br />
+ :eyes: See **GroupPrioritizationExampleScene** for example.<br/>
 The **GroupPrioritizationManager** Script has a property `Group Managers List` where you can add **GroupManager** objects. If these are not assigned, it will automatically search for **GroupManager** in their children Game Objects. <br />
 Each **GroupManager** will have a property `Speech Source List` you can add **SpeechSource** objects into. If these are not assigned, it will automatically search for **SpeechSource** in their children Game Objects.<br />
 Each **SpeechSource** should have a corresponding **AudioSource**, and initially `is Not Focused` is true. The `is Keyword Detected` is used in combination with the Keyword Prioritization Feature.<br />
