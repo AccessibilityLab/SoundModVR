@@ -5,13 +5,13 @@ using static UnityEngine.GraphicsBuffer;
 
 public class ShoulderLocalizationManager : MonoBehaviour
 {
+    public AudioSource audioSource;
     public Camera mainCamera;
     public AudioSource targetAudioSource;
     public AudioClip leftAudioClip;
     public AudioClip rightAudioClip;
     //public Caption captionField;
 
-    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {

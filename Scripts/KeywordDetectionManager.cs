@@ -12,12 +12,10 @@ public class KeywordDetectionManager : MonoBehaviour
 {
     public List<string> keywords;
     public AudioClip notificationClip;
-    private bool isAddingKeyword;
     //public ShoulderLocalizationManager shoulderLocalizationManager;
     // Start is called before the first frame update
     void Start()
     {
-        isAddingKeyword = true;
     }
 
     // Update is called once per frame
@@ -25,8 +23,9 @@ public class KeywordDetectionManager : MonoBehaviour
     {
     }
 
-    public IEnumerator detectKeywordAndPlay(string script, SpeechSource speechSource, AudioClip audioClip) {
+    public IEnumerator detectKeywordAndPlay(string script, SpeechSource speechSource) {
         AudioSource audioSource = speechSource.audioSource;
+        AudioClip audioClip = audioSource.clip;
         if (detectKeywords(script))
         {
             speechSource.isKeywordDetected = true;
@@ -84,23 +83,24 @@ public class KeywordDetectionManager : MonoBehaviour
         return word;
     }
 
-    public void SetAddOrSubtract(bool toggleVlaue) { 
-        isAddingKeyword = toggleVlaue;
-    }
-
-    public void ChangeKeywordList(string keyword)
-    {
-        if (isAddingKeyword)
+    public void AddKeyword(string keyword) {
+        if (!keywords.Contains(keyword))
         {
             keywords.Add(keyword);
         }
-        else { 
-            keywords.Remove(keyword);
+        else {
+            Debug.LogError("this keyword is already added");
         }
     }
 
-    public void AddOrSubtractKeyword(bool isAdding, string keyword) {
-        SetAddOrSubtract(isAdding);
-        ChangeKeywordList(keyword);
+    public void SubtractKeyword(string keyword) {
+        if (keywords.Contains(keyword))
+        {
+            keywords.Remove(keyword);
+        }
+        else
+        {
+            Debug.LogError("this keyword is has not been added yet");
+        }
     }
 }

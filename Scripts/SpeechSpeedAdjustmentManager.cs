@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public class SpeechSpeedAdjustmentManager : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioMixer _MasterMixer;
+    public AudioMixer audioMixer;
     public string audioMixerPitchLabel;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class SpeechSpeedAdjustmentManager : MonoBehaviour
         if (audioSource != null && audioMixerPitchLabel != null)
         {
             audioSource.pitch = speedValue;
-            _MasterMixer.SetFloat(audioMixerPitchLabel, 1 / speedValue);
+            audioMixer.SetFloat(audioMixerPitchLabel, 1 / speedValue);
         }
     }
 }

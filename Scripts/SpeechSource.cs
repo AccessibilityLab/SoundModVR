@@ -14,6 +14,9 @@ public class SpeechSource : MonoBehaviour
     {
         isKeywordDetected = false;
         isNotFocused = false;
+        if (audioSource == null) {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     // Update is called once per frame
