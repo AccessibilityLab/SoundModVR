@@ -183,7 +183,12 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e21d85
 
 ### 6) Shoulder Localization Helper
 *(* :thumbsup: *Recommended to use in situations where the directional location of a sound-producing object is important to the experience.)* <br />
-The **ShoulderLocalizationManager** Script is used for this feature. It requires you to attach the main camera of the player to the `Main Camera` field. It requires you to assign an **AudioSource** to the script in the `Audio Source` field, otherwise, it will assume it is attached to a game object with an **AudioSource**. An optional field is `targetAudioSource`, for the case where there's only one target. The last two fields are `leftAudioClip` and `rightAudioClip`, where the developer can input their own direction indicator sounds or the default sounds in `Sounds->Left.wav` and `Sounds->Right.wav`.
+ :eyes:  :eyes:  :eyes: See **ShoulderLocalizationManagerExampleScene** for example.<br/><br/>
+The **ShoulderLocalizationManager** Script is used for this feature.<br/>
+- The `Audio Source` field will be used to play the Shoulder Localization Helper notification sounds.<br/>
+- The `Main Camera` field should contain the main camera of the user.<br/>
+- An optional field is `targetAudioSource`, for the case where there's only one target.<br/>
+- The last two fields are `leftAudioClip` and `rightAudioClip`, where the developer can input their own direction indicator sounds or the default sounds in `Sounds->Left.wav` and `Sounds->Right.wav`.<br/>
 
 **Public Functions**
 
@@ -194,7 +199,7 @@ The **ShoulderLocalizationManager** Script is used for this feature. It requires
 <details><summary><b>Implementation Steps:</b></summary>
 
 1. *Add a **ShoulderLocalizationManager** Scritp to the Scene.*
-2. *Add an **AudioSource** to this object that has **ShoulderLocalizationManager** attached.*
+2. *Add an **AudioSource** to this object that has **ShoulderLocalizationManager** attached, or assign an **AudioSource** to the `Audio Source. field*
 3. *Attach the main camera of the scene to the `Main Camera` Field.*
 4. *If the feature is used for a fixed **AudioSource**, you could attach that **AudioSource** to the `Target Audio Source` field.*
 5. *Attach the audio clips for indicating "To your left" and "To your right", in the `Left Audio Clip` and `Right Audio Clip` fields. The developer can input their own direction indicator sounds or use the default sounds in `Sounds->Left.wav` and `Sounds->Right.wav`.*
