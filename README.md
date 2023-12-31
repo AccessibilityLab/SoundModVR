@@ -246,20 +246,24 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/fa82c3
 
 ### 8) Smart Notification
 *(* :thumbsup: *Recommended to use before important sound message is played.)* <br />
-This feature uses the script **SmartNotificationManager** to control the on and off, and the sounds played as the smart notification. The script has a public boolean variable `smartNotificationOn` to indicate whether the smart notification feature is on or off. The developer also need to put the notification clip in the Notification Clip field, with the default provided in the toolkit in `Sounds->notif1_inTheEnd.mp3`. Before playing an important sound, the developer could call `PlaySmartNotification()`.
+ :eyes:  :eyes:  :eyes: See **SmartNotificationExampleScene** for example.<br/><br/>
+This feature uses the script **SmartNotificationManager** to control the on and off, and the sounds played as the smart notification.<br/>
+- The script has a public boolean variable `smartNotificationOn` to indicate whether the smart notification feature is on or off.<br/>
+- The developer also needs to put the notification clip in the Notification Clip field, with the default provided in the toolkit in `Sounds->notif1_inTheEnd.mp3`.
+- Before playing an important sound, the developer could start a `PlaySmartNotification()` Coroutine.
 
 **Public Functions**
 `ToggleSmartNotification(bool)`: This function will turn the Smart notification feature on/off by changing the public flag `smartNotificationOn` variable.
 
 **Public Coroutine**
-`PlaySmartNotification(AudioSource)`: This Coroutine will play the notification sound selected. You need to pass in an AudioSource to play the smart notification. It will not change the original AudioClip attached to the AudioSource.
+`PlaySmartNotification(AudioSource)`: You need to pass in the AudioSource that will be used to play the following important sound. This Coroutine will play the notification sound selected followed by the audio clip of the AudioSource that is passed in.
 
 <details><summary><b>Implementation Steps:</b></summary>
 
 1. *Add a **SmartNotificationManager** Script to the scene.*
 2. *Add the default notification clip in `Sounds->notif1_inTheEnd.mp3` or another clip of the developer's choice into the `Notification Clip` Field.*
 3. *Use `ToggleSmartNotification` to toggle the Smart Notification Feature on or off.*
-4. *When playing a sound where you want a notification played before the sound, start the `PlaySmartNotification` Coroutine with the **AudioSource** passed in as the parameter.*
+4. *When playing a sound where you want a notification played before the sound, start the `PlaySmartNotification` Coroutine with the **AudioSource** of the important sound passed in as the parameter.*
 </details>
 
 
