@@ -57,7 +57,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e7726d
 
 ### 2) Keyword Prioritization
 *(* :thumbsup: *Recommended to use in situations where important speech is delivered.)* <br />
- :eyes:  :eyes:  :eyes: See **GroupPrioritizationExampleScene** for example.<br/><br/>
+ :eyes:  :eyes:  :eyes: See **KeywordPrioritizationExampleScene** for example.<br/><br/>
 The **KeywordDetectionManager** is used to control this feature. It has a property, `keywords`, which is a List of strings that identify the keywords to look out for. <br/>
 It also allows you to set a notification sound by setting the `Notification Clip` variable. You could use the notification clip in `Sounds->notif1_inTheEnd.mp3` or any sound clip for the notification clip.<br/>
 
@@ -87,7 +87,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/98a22b
 
 ### 3) Sound Prioritization
 *(* :thumbsup: *Recommended to use in situations where character speech/ important sound and environment sounds/background music are concurrent.)* <br />
- :eyes:  :eyes:  :eyes: See **SoundPrioritizationManagerExampleScene** for example.<br/><br/>
+ :eyes:  :eyes:  :eyes: See **SoundPrioritizationExampleScene** for example.<br/><br/>
 The **SoundPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Audio Mixer`, the `Env Vol Label`, the `Character Audio Source List`, and the `Lower Env On Speech Setting`.<br/>
 - The `Audio Mixer` is the audio mixer that contains the mixer group for the environment sounds.<br/>
 - The `Env Vol Label` is the exposed parameter from the environment audio mixer group. To do this, right-click on the volume in the audio mixer inspector of that audio mixer group and select “Expose “” to script”. It will then be accessible in exposed parameters.<br/>
