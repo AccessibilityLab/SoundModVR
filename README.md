@@ -274,7 +274,11 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/b92e57
 
 ### 9) Custom Feedback Sound
 *(* :thumbsup: *Recommended to use when there are feedback sounds in the program.)* <br />
-This feature is managed by the Script **CustomFeedbackManager**. It currently supports a correct and incorrect feedback sound. The developer should input the **AudioClip** Files of the correct and incorrect feedback sounds in the `Correct/Incorrect Feedback Clips List`. Then, the developer should put the index of the default feedback sounds into `correctFeedbackIndex` and `incorrectFeedbackIndex` fields. The default indices would be 0. The `audioSource` field will be used to play the feedback sounds. *See some example Feedback sounds in the Sounds-FeedbackSounds folder.*
+ :eyes:  :eyes:  :eyes: See **CustomFeedbackSoundExampleScene** for example.<br/><br/>
+This feature is managed by the Script **CustomFeedbackManager**. It currently supports a correct and incorrect feedback sound.<br/>
+- The developer should input the **AudioClip** Files of the correct and incorrect feedback sounds in the `Correct/Incorrect Feedback Clips List`.<br/>
+- Then, the developer should put the index of the default feedback sounds into `correctFeedbackIndex` and `incorrectFeedbackIndex` fields. The default indices would be 0.<br/>
+- The `audioSource` field will be used to play the feedback sounds. *See some example Feedback sounds in the Sounds-FeedbackSounds folder.*<br/>
 
 **Public Functions**
 `SelectCorrectFeedback(int)`: This function sets the correct feedback index to be the input int.
