@@ -183,7 +183,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e21d85
 
 ### 6) Shoulder Localization Helper
 *(* :thumbsup: *Recommended to use in situations where the directional location of a sound-producing object is important to the experience.)* <br />
- :eyes:  :eyes:  :eyes: See **ShoulderLocalizationManagerExampleScene** for example.<br/><br/>
+ :eyes:  :eyes:  :eyes: See **ShoulderLocalizationExampleScene** for example.<br/><br/>
 The **ShoulderLocalizationManager** Script is used for this feature.<br/>
 - The `Audio Source` field will be used to play the Shoulder Localization Helper notification sounds.<br/>
 - The `Main Camera` field should contain the main camera of the user.<br/>
@@ -214,18 +214,24 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/04f0b5
 
 ### 7) Live Listen Helper
 *(* :thumbsup: *Recommended to use in situations where user is needs to locate sound source inside a small, reachable environment)* <br />
-The **LiveListenHelperManager** Script is used for this feature. It should be attached to a game object that the user can grab and move around the scene. On the same object, there should be an **AudioListener** Component attached. The developer should add the list of **AudioSource** that they want the Live Listen Helper to apply to into the field `Audio Source List`. The developer could also edit the cutoff of the sound single-out effect, the default of the cutoff is 0.5f. To enable the user to start using and finish using the feature, the developer should call the `StartUsingLiveListenHelper` and `StopUsingLiveListenHelper` functions as the user picks up and drops the object.
+ :eyes:  :eyes:  :eyes: See **LivelistenHelperExampleScene** for example.<br/><br/>
+The **LiveListenHelperManager** Script is used for this feature.<br/>
+- It should be attached to a game object that the user can grab and move around the scene.<br/>
+- On the same object, there should be an **AudioListener** Component attached and should initially be set as a **disabled component**.<br/>
+- The developer should add the list of **AudioSource** that they want the Live Listen Helper to apply to into the field `Audio Source List`.<br/>
+- The developer could also edit the cutoff of the sound single-out effect, the default of the cutoff is 0.5f.<br/>
+- To enable the user to start using and finish using the feature, the developer should call the `StartUsingLiveListenHelper` and `StopUsingLiveListenHelper` functions as the user picks up and drops the object.<br/>
 
 **Public Functions**
-`StartUsingLiveListenHelper()`: This function takes in no parameters. It sets the **AudioListener** of the game from the default listener on the player camera to the **AudioListener** attached to the Live Listen Helper object.
+`StartUsingLiveListenHelper()`: This function takes in no parameters. It sets the **AudioListener** of the game from the default listener on the player camera to the **AudioListener** attached to the Live Listen Helper object. It will also start the single-out sound effects of the Live Listen Helper.
 
-`StopUsingLiveListenHelper()`: This function stops using the Live Listen Helper by switching back the **AudioListener** used and stops the effect of the Live Listen Helper.
+`StopUsingLiveListenHelper()`: This function stops using the Live Listen Helper by switching back the **AudioListener** to the original and stops the effect of the Live Listen Helper.
 
 <details><summary><b>Implementation Steps:</b></summary>
 
-1. *Instantiate a ball (or other grabbable object of your choice) in the Scene, and attach **LiveListenHelperManager** Script to the ball/object.*
+1. *Instantiate a ball (or other grabbable objects of your choice) in the Scene, and attach **LiveListenHelperManager** Script to the ball/object.*
 2. *Add all the **AudioSources** to be affected by the Live Listen Helper feature to the `AudioSourceList` field.*
-3. *Add an **Audio Listener** to this ball/object.*
+3. *Add an **Audio Listener** to this ball/object and disable this component.*
 4. *Change the `Cutoff` field if needed.*
 5. *Call `StartUsingLiveListenHelper()` and `StopUsingLiveListenHelper()` as documented above when you want to start and stop using this ball as the Live Listening Tool. One way is to start it when the ball is grabbed and stop when the ball is released (as shown in the video below).*
 </details>
