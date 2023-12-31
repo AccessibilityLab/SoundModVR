@@ -32,9 +32,10 @@ This is the list of features. They are divided into 4 categories - ***Prioritiza
 ### 1) Group Prioritization 
 *(* :thumbsup: *Recommended to use in situations where multiple groups of conversation/sounds are happening concurrently.)* <br />
  :eyes:  :eyes:  :eyes: See **GroupPrioritizationExampleScene** for example.<br/><br/>
-The **GroupPrioritizationManager** Script has a property `Group Managers List` where you can add **GroupManager** objects. If these are not assigned, it will automatically search for **GroupManager** in their children Game Objects. <br />
-Each **GroupManager** will have a property `Speech Source List` you can add **SpeechSource** objects into. If these are not assigned, it will automatically search for **SpeechSource** in their children Game Objects.<br />
-Each **SpeechSource** should have a corresponding **AudioSource**, and initially `is Not Focused` is true. The `is Keyword Detected` is used in combination with the Keyword Prioritization Feature.<br />
+ Use **GroupPrioritizationmanager**, **GroupManager** and **SpeechSource** scripts for this feature.<br/>
+- The **GroupPrioritizationManager** Script has a property `Group Managers List` where you can add **GroupManager** objects. If these are not assigned, it will automatically search for **GroupManager** in their children Game Objects. <br />
+- Each **GroupManager** will have a property `Speech Source List` you can add **SpeechSource** objects into. If these are not assigned, it will automatically search for **SpeechSource** in their children Game Objects.<br />
+- Each **SpeechSource** should have a corresponding **AudioSource**, and initially `is Not Focused` is true. The `is Keyword Detected` is used in combination with the Keyword Prioritization Feature.<br />
 
 **Public Functions**:
 
@@ -58,8 +59,9 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e7726d
 ### 2) Keyword Prioritization
 *(* :thumbsup: *Recommended to use in situations where important speech is delivered.)* <br />
  :eyes:  :eyes:  :eyes: See **KeywordPrioritizationExampleScene** for example.<br/><br/>
-The **KeywordDetectionManager** is used to control this feature. It has a property, `keywords`, which is a List of strings that identify the keywords to look out for. <br/>
-It also allows you to set a notification sound by setting the `Notification Clip` variable. You could use the notification clip in `Sounds->notif1_inTheEnd.mp3` or any sound clip for the notification clip.<br/>
+The **KeywordDetectionManager** is used to control this feature.<br/>
+- It has a property, `keywords`, which is a List of strings that identify the keywords to look out for. <br/>
+- It also allows you to set a notification sound by setting the `Notification Clip` variable. You could use the notification clip in `Sounds->notif1_inTheEnd.mp3` or any sound clip for the notification clip.<br/>
 
 **Public Functions**:
 
