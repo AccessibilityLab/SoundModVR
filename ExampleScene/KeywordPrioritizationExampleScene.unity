@@ -1154,7 +1154,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1644593464}
-        m_TargetAssemblyTypeName: ExamplePlay, Assembly-CSharp
+        m_TargetAssemblyTypeName: ExamplePlayScript, Assembly-CSharp
         m_MethodName: DetectKeywordAndPlay
         m_Mode: 1
         m_Arguments:
@@ -1212,12 +1212,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1644593459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b807a8b585de54295f31bdb905ac4c, type: 3}
+  m_Script: {fileID: 11500000, guid: fdad040a3a2237c419b1ff30fbdd7aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   keywordDetectionManager: {fileID: 437146439}
   script: to your left
   speechSource: {fileID: 1558159164}
+  smartNotificationManager: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &1762707486
 GameObject:
   m_ObjectHideFlags: 0

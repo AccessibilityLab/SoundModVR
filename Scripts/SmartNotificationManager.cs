@@ -18,7 +18,7 @@ public class SmartNotificationManager : MonoBehaviour
         
     }
 
-    IEnumerator PlaySmartNotification(AudioSource audioSource) {
+    public IEnumerator PlaySmartNotificationAndAudio(AudioSource audioSource) {
         if (smartNotificationOn) { 
             AudioClip prevClip = audioSource.clip;
             audioSource.clip = notificationClip;
@@ -34,6 +34,8 @@ public class SmartNotificationManager : MonoBehaviour
             }
             audioSource.clip = prevClip;
         }
+        audioSource.Play();
+        yield return new WaitForSeconds(audioSource.clip.length);
     }
 
     public void ToggleSmartNotification(bool val) { 
