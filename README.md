@@ -32,9 +32,10 @@ This is the list of features. They are divided into 4 categories - ***Prioritiza
 ### 1) Group Prioritization 
 *(* :thumbsup: *Recommended to use in situations where multiple groups of conversation/sounds are happening concurrently.)* <br />
  :eyes:  :eyes:  :eyes: See **GroupPrioritizationExampleScene** for example.<br/><br/>
-The **GroupPrioritizationManager** Script has a property `Group Managers List` where you can add **GroupManager** objects. If these are not assigned, it will automatically search for **GroupManager** in their children Game Objects. <br />
-Each **GroupManager** will have a property `Speech Source List` you can add **SpeechSource** objects into. If these are not assigned, it will automatically search for **SpeechSource** in their children Game Objects.<br />
-Each **SpeechSource** should have a corresponding **AudioSource**, and initially `is Not Focused` is true. The `is Keyword Detected` is used in combination with the Keyword Prioritization Feature.<br />
+ Use **GroupPrioritizationmanager**, **GroupManager** and **SpeechSource** scripts for this feature.<br/>
+- The **GroupPrioritizationManager** Script has a property `Group Managers List` where you can add **GroupManager** objects. If these are not assigned, it will automatically search for **GroupManager** in their children Game Objects. <br />
+- Each **GroupManager** will have a property `Speech Source List` you can add **SpeechSource** objects into. If these are not assigned, it will automatically search for **SpeechSource** in their children Game Objects.<br />
+- Each **SpeechSource** should have a corresponding **AudioSource**, and initially `is Not Focused` is true. The `is Keyword Detected` is used in combination with the Keyword Prioritization Feature.<br />
 
 **Public Functions**:
 
@@ -57,9 +58,10 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e7726d
 
 ### 2) Keyword Prioritization
 *(* :thumbsup: *Recommended to use in situations where important speech is delivered.)* <br />
- :eyes:  :eyes:  :eyes: See **GroupPrioritizationExampleScene** for example.<br/><br/>
-The **KeywordDetectionManager** is used to control this feature. It has a property, `keywords`, which is a List of strings that identify the keywords to look out for. <br/>
-It also allows you to set a notification sound by setting the `Notification Clip` variable. You could use the notification clip in `Sounds->notif1_inTheEnd.mp3` or any sound clip for the notification clip.<br/>
+ :eyes:  :eyes:  :eyes: See **KeywordPrioritizationExampleScene** for example.<br/><br/>
+The **KeywordDetectionManager** is used to control this feature.<br/>
+- It has a property, `keywords`, which is a List of strings that identify the keywords to look out for. <br/>
+- It also allows you to set a notification sound by setting the `Notification Clip` variable. You could use the notification clip in `Sounds->notif1_inTheEnd.mp3` or any sound clip for the notification clip.<br/>
 
 **Public Functions**:
 
@@ -87,7 +89,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/98a22b
 
 ### 3) Sound Prioritization
 *(* :thumbsup: *Recommended to use in situations where character speech/ important sound and environment sounds/background music are concurrent.)* <br />
- :eyes:  :eyes:  :eyes: See **SoundPrioritizationManagerExampleScene** for example.<br/><br/>
+ :eyes:  :eyes:  :eyes: See **SoundPrioritizationExampleScene** for example.<br/><br/>
 The **SoundPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Audio Mixer`, the `Env Vol Label`, the `Character Audio Source List`, and the `Lower Env On Speech Setting`.<br/>
 - The `Audio Mixer` is the audio mixer that contains the mixer group for the environment sounds.<br/>
 - The `Env Vol Label` is the exposed parameter from the environment audio mixer group. To do this, right-click on the volume in the audio mixer inspector of that audio mixer group and select “Expose “” to script”. It will then be accessible in exposed parameters.<br/>
@@ -183,7 +185,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e21d85
 
 ### 6) Shoulder Localization Helper
 *(* :thumbsup: *Recommended to use in situations where the directional location of a sound-producing object is important to the experience.)* <br />
- :eyes:  :eyes:  :eyes: See **ShoulderLocalizationManagerExampleScene** for example.<br/><br/>
+ :eyes:  :eyes:  :eyes: See **ShoulderLocalizationExampleScene** for example.<br/><br/>
 The **ShoulderLocalizationManager** Script is used for this feature.<br/>
 - The `Audio Source` field will be used to play the Shoulder Localization Helper notification sounds.<br/>
 - The `Main Camera` field should contain the main camera of the user.<br/>
@@ -214,18 +216,24 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/04f0b5
 
 ### 7) Live Listen Helper
 *(* :thumbsup: *Recommended to use in situations where user is needs to locate sound source inside a small, reachable environment)* <br />
-The **LiveListenHelperManager** Script is used for this feature. It should be attached to a game object that the user can grab and move around the scene. On the same object, there should be an **AudioListener** Component attached. The developer should add the list of **AudioSource** that they want the Live Listen Helper to apply to into the field `Audio Source List`. The developer could also edit the cutoff of the sound single-out effect, the default of the cutoff is 0.5f. To enable the user to start using and finish using the feature, the developer should call the `StartUsingLiveListenHelper` and `StopUsingLiveListenHelper` functions as the user picks up and drops the object.
+ :eyes:  :eyes:  :eyes: See **LivelistenHelperExampleScene** for example.<br/><br/>
+The **LiveListenHelperManager** Script is used for this feature.<br/>
+- It should be attached to a game object that the user can grab and move around the scene.<br/>
+- On the same object, there should be an **AudioListener** Component attached and should initially be set as a **disabled component**.<br/>
+- The developer should add the list of **AudioSource** that they want the Live Listen Helper to apply to into the field `Audio Source List`.<br/>
+- The developer could also edit the cutoff of the sound single-out effect, the default of the cutoff is 0.5f.<br/>
+- To enable the user to start using and finish using the feature, the developer should call the `StartUsingLiveListenHelper` and `StopUsingLiveListenHelper` functions as the user picks up and drops the object.<br/>
 
 **Public Functions**
-`StartUsingLiveListenHelper()`: This function takes in no parameters. It sets the **AudioListener** of the game from the default listener on the player camera to the **AudioListener** attached to the Live Listen Helper object.
+`StartUsingLiveListenHelper()`: This function takes in no parameters. It sets the **AudioListener** of the game from the default listener on the player camera to the **AudioListener** attached to the Live Listen Helper object. It will also start the single-out sound effects of the Live Listen Helper.
 
-`StopUsingLiveListenHelper()`: This function stops using the Live Listen Helper by switching back the **AudioListener** used and stops the effect of the Live Listen Helper.
+`StopUsingLiveListenHelper()`: This function stops using the Live Listen Helper by switching back the **AudioListener** to the original and stops the effect of the Live Listen Helper.
 
 <details><summary><b>Implementation Steps:</b></summary>
 
-1. *Instantiate a ball (or other grabbable object of your choice) in the Scene, and attach **LiveListenHelperManager** Script to the ball/object.*
+1. *Instantiate a ball (or other grabbable objects of your choice) in the Scene, and attach **LiveListenHelperManager** Script to the ball/object.*
 2. *Add all the **AudioSources** to be affected by the Live Listen Helper feature to the `AudioSourceList` field.*
-3. *Add an **Audio Listener** to this ball/object.*
+3. *Add an **Audio Listener** to this ball/object and disable this component.*
 4. *Change the `Cutoff` field if needed.*
 5. *Call `StartUsingLiveListenHelper()` and `StopUsingLiveListenHelper()` as documented above when you want to start and stop using this ball as the Live Listening Tool. One way is to start it when the ball is grabbed and stop when the ball is released (as shown in the video below).*
 </details>
@@ -238,20 +246,24 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/fa82c3
 
 ### 8) Smart Notification
 *(* :thumbsup: *Recommended to use before important sound message is played.)* <br />
-This feature uses the script **SmartNotificationManager** to control the on and off, and the sounds played as the smart notification. The script has a public boolean variable `smartNotificationOn` to indicate whether the smart notification feature is on or off. The developer also need to put the notification clip in the Notification Clip field, with the default provided in the toolkit in `Sounds->notif1_inTheEnd.mp3`. Before playing an important sound, the developer could call `PlaySmartNotification()`.
+ :eyes:  :eyes:  :eyes: See **SmartNotificationExampleScene** for example.<br/><br/>
+This feature uses the script **SmartNotificationManager** to control the on and off, and the sounds played as the smart notification.<br/>
+- The script has a public boolean variable `smartNotificationOn` to indicate whether the smart notification feature is on or off.<br/>
+- The developer also needs to put the notification clip in the Notification Clip field, with the default provided in the toolkit in `Sounds->notif1_inTheEnd.mp3`.
+- Before playing an important sound, the developer could start a `PlaySmartNotification()` Coroutine.
 
 **Public Functions**
 `ToggleSmartNotification(bool)`: This function will turn the Smart notification feature on/off by changing the public flag `smartNotificationOn` variable.
 
 **Public Coroutine**
-`PlaySmartNotification(AudioSource)`: This Coroutine will play the notification sound selected. You need to pass in an AudioSource to play the smart notification. It will not change the original AudioClip attached to the AudioSource.
+`PlaySmartNotification(AudioSource)`: You need to pass in the AudioSource that will be used to play the following important sound. This Coroutine will play the notification sound selected followed by the audio clip of the AudioSource that is passed in.
 
 <details><summary><b>Implementation Steps:</b></summary>
 
 1. *Add a **SmartNotificationManager** Script to the scene.*
 2. *Add the default notification clip in `Sounds->notif1_inTheEnd.mp3` or another clip of the developer's choice into the `Notification Clip` Field.*
 3. *Use `ToggleSmartNotification` to toggle the Smart Notification Feature on or off.*
-4. *When playing a sound where you want a notification played before the sound, start the `PlaySmartNotification` Coroutine with the **AudioSource** passed in as the parameter.*
+4. *When playing a sound where you want a notification played before the sound, start the `PlaySmartNotification` Coroutine with the **AudioSource** of the important sound passed in as the parameter.*
 </details>
 
 
@@ -262,7 +274,11 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/b92e57
 
 ### 9) Custom Feedback Sound
 *(* :thumbsup: *Recommended to use when there are feedback sounds in the program.)* <br />
-This feature is managed by the Script **CustomFeedbackManager**. It currently supports a correct and incorrect feedback sound. The developer should input the **AudioClip** Files of the correct and incorrect feedback sounds in the `Correct/Incorrect Feedback Clips List`. Then, the developer should put the index of the default feedback sounds into `correctFeedbackIndex` and `incorrectFeedbackIndex` fields. The default indices would be 0. The `audioSource` field will be used to play the feedback sounds. *See some example Feedback sounds in the Sounds-FeedbackSounds folder.*
+ :eyes:  :eyes:  :eyes: See **CustomFeedbackSoundExampleScene** for example.<br/><br/>
+This feature is managed by the Script **CustomFeedbackManager**. It currently supports a correct and incorrect feedback sound.<br/>
+- The developer should input the **AudioClip** Files of the correct and incorrect feedback sounds in the `Correct/Incorrect Feedback Clips List`.<br/>
+- Then, the developer should put the index of the default feedback sounds into `correctFeedbackIndex` and `incorrectFeedbackIndex` fields. The default indices would be 0.<br/>
+- The `audioSource` field will be used to play the feedback sounds. *See some example Feedback sounds in the Sounds-FeedbackSounds folder.*<br/>
 
 **Public Functions**
 `SelectCorrectFeedback(int)`: This function sets the correct feedback index to be the input int.
