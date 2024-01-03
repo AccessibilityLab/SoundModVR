@@ -1,9 +1,10 @@
 # Sound-Customization-VR-Accessibility Feature Toolkit
  
 ## 1. Introduction
+**This toolkit is in Beta! We welcome any suggestions! Please provide them through the SoundCusVR Developer Study or email Xinyun Cao at xinyunc@umich.edu directly.**<br/>
 This is a Unity Toolkit that contains nine features for Sound Customization for DHH (Deaf and Hard of Hearing) Users. It is designed with VR development in mind, but it might be used for other development as well.
 
-## 2. Key Definition
+## 2. Key Ideas
 **Sound Customization**: Changing aspects of the sounds used in the VR app such as shifting frequencies of the sound or prioritizing certain sounds to satisfy the needs of individual DHH users.<br />
 **Unity Audio Mixer**: You can access the AudioMixer window from Window->Audio->AudioMixer. For more information about AudioMixer, please see Unity documentation: [AudioMixer](https://docs.unity3d.com/Manual/AudioMixer.html) and [AudioMixer Scripting](https://docs.unity3d.com/ScriptReference/Audio.AudioMixer.html).
 
