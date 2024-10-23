@@ -12,20 +12,29 @@ This is a Unity Toolkit that contains nine features for Sound Customization for 
 This is the list of features. They are divided into 4 categories - ***Prioritization, Sound Parameter Changes, Spatial Assistance, and Add-on Sounds***. Each feature should work independently, and some features could work together.
 ### 3.1 Prioritization
 [**Group Prioritization**](#group-prioritization): When having multiple groups of sounds, focus on a specific group and lower sounds of all other groups.<br />
-[**Keyword Prioritization**](#keyword-prioritization): Set specific keywords you're interested in, and the program will play a notification and increase speech volume when it's played.<br />
-[**Sound Prioritization**](#sound-prioritization): Lower environment sounds during speech/important sounds.
+[**Keyword Prioritization**](#keyword-prioritization): set specific keywords you're interested in, and the program will play a notification and increase speech volume when it's played.<br />
+[**Sound Prioritization**](#sound-prioritization): lower environment sounds during speech/important sounds.<br />
+[**Direction-Based Prioritization**](#direction-based-prioritization): amplifies the sounds in the direction the user faces while simultaneously reducing the volume of sounds coming from other directions.
 
 ### 3.2 Sound Parameter Changes
-[**Volume and Pitch Adjustment**](#volume-and-pitch-adjustment): Set volume and pitch both for the system and for individual sound sources in the environment.<br />
-[**Speech Speed Adjustment**](#speech-speed-adjustment): Adjust speed for individual speech sound sources.
+[**Volume and Pitch Adjustment**](#volume-and-pitch-adjustment): set volume and pitch both for the system and for individual sound sources in the environment.<br />
+[**Speech Speed Adjustment**](#speech-speed-adjustment): adjust speed for individual speech sound sources.<br />
+[**Frequency Contrast Enhancement**](#frequency-contrast-enhancement): adjusts the frequencies of adjacent sound sources, elevating one while lowering the other to enhance their distinction.<br />
+[**Beat Enhancement**](#beat-enhancement): boosts the rhythm of music sounds by dynamically increasing and decreasing the volume along with the beats.
+
 
 ### 3.3 Spatial Assistance
 [**Shoulder Localization Helper**](#shoulder-localization-helper): To alert you when an important sound is played/ by your request, and if it’s on your left/right.<br />
-[**Live Listen Helper**](#live-listen-helper): Single out sounds when you move them close to sound sources.
+[**Live Listen Helper**](#live-listen-helper): single out sounds when you move them close to sound sources.<br />
+[**Left-Right Balance**](#left-right-balance): adjust the system sound balance to either the left or right.<br />
+[**Hearing Range Adjustment**](#hearing-range-adjustment):  allows users to adjust the range for sound activation.<br />
+[**Sound Distance Assistance**](#sound-distance-assistance): aids in perceiving distance by modulating sound pitch based on the user’s proximity to the source: pitch decreases as distance increases and vice versa.<br />
+[**Silence Zone**](#silence-zone): increases the contrast between spatial sounds by including a silence zone between them.<br />
 
 ### 3.4 Add-on Sounds
 [**Smart Notification**](#smart-notification): Playing a notification before an important sound, like speech or feedback.<br />
-[**Custom Feedback Sound**](#custom-feedback-sound): Change the feedback sounds in the system to your individual preferences/needs.
+[**Custom Feedback Sound**](#custom-feedback-sound): Change the feedback sounds in the system to your individual preferences/needs.<br />
+[**Calming Noise**](#calming-noise): enables users to select among white noise, pink noise, and rain sounds to add to the VR environment.<br />
 
 ## 4. Usage Guide
 <div id="group-prioritization"></div>
