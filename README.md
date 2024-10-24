@@ -365,6 +365,28 @@ The **StereoSoundManager** Script is used for this feature. The scene would also
 
 https://github.com/user-attachments/assets/892d50e9-f928-4db4-8066-8078e16e6608
 
+<div id="hearing-range-adjustment"></div>
+### 3.4) Hearing Range Adjustment
+*(* :thumbsup: *Recommended to use in scenarios with important sound sources scattered around the scene)* <br />
+
+The **HearingRangeManager** Script is used for this feature.<br />
+- It has an optional variable named `Audio Source List`. You can manually assign the **Audio Source** that should be modified by this tool. If unassigned, this script will look for **AudioSource** in its children objects. <br />
+
+**Public Functions**<br />
+`ChangeHearingRange(float)`: This function is called with the float value for the range of the hearing. The larger the range number, the further the user can hear.
+
+
+<details><summary><b>Implementation Steps:</b></summary>
+
+1. *Add a **HearingRangeManager** Scritp to the Scene.*
+2. Assign the **AudioSource** to the `Audio Source List` field, or attach this manager to a mutual parent of all such **AudioSource** objects.
+3. Upon slider value change, call `ChangeHearingRange(float)` to change the hearing range.
+</details>
+
+
+
+https://github.com/user-attachments/assets/78b5195a-f9e3-4f6d-b10b-60ffbac39d36
+
 
 
 <div id="smart-notification"></div>
