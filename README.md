@@ -141,7 +141,9 @@ The **DirectionPrioritizationManager** is used to control this feature. It has s
 
 You will also need an **AudioManager** Script in the scene. Please see the implementation details below.
 
-**Public Functions**: N/A
+**Public Functions**:
+
+`ToggleOnOff(bool toggle)`: This function toggles the function on and off.
 
 <details><summary><b>Implementation Steps:</b></summary>
 
@@ -164,7 +166,7 @@ https://github.com/user-attachments/assets/3c458945-df81-452d-a360-a5f2f738845b
 
 <div id="volume-and-pitch-adjustment"></div>
 
-### 4) Volume and Pitch Adjustment
+### 2.1) Volume and Pitch Adjustment
 *(* :thumbsup: *Recommended to use for any sound, especially sounds on the lower/higher registry.)* <br />
  :eyes:  :eyes:  :eyes: See **VolPitchShiftExampleScene** for example.<br/><br/>
 The **VolPitchShiftManager** is used to control this feature. It has several properties to set before use, including `Audio Mixer Group`, `Audio Sources List`, `Pitch Label`, and `Volume Label`.<br/>
@@ -197,7 +199,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/ee1cd1
 
 <div id="speech-speed-adjustment"></div>
 
-### 5) Speech Speed Adjustment
+### 2.2) Speech Speed Adjustment
 *(* :thumbsup: *Recommended to use for character/system speech that contains important information.)* <br />
  :eyes:  :eyes:  :eyes: See **SpeechSpeedAdjustmentExampleScene** for example.<br/><br/>
 The **SpeechSpeedManager** is used to control this feature.<br/>
@@ -222,6 +224,36 @@ The **SpeechSpeedManager** is used to control this feature.<br/>
 
 
 https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e21d8592-825e-46bd-acf3-dd3d57adde21
+
+
+<div id="frequency-contrast-enhancement"></div>
+
+### 2.3) Frequency Contrast Enhancement
+*(* :thumbsup: *Recommended to use for voices similar in pitch.)* <br />
+The **ContrastEnhancementManager** is used to control this feature. It has the following variables: <br/>
+- The `Frequency Threshold` is the threshold for the frequency difference between characters for this tool to be triggered.<br/>
+- The `Dist Threshold` is the maximum distance between characters for this tool to be triggered.<br/>
+- The `Master Mixer` is the mixer group that all sound sources that this tool could affect should be assigned to.<br/>
+
+**Public Functions**
+
+`OnContrastToggle(float)`: This function toggles the functionality of this tool on and off.
+
+<details><summary><b>Implementation Steps:</b></summary>
+
+1. *Add a **SpeechSource** Script to each of the sources of speech that you wish to be modified by this tool, assign the `AudioSource` to the field.*
+2. *Create an `AudioMixer` for each SpeechSource, and assign them to the corresponding SpeechSource Script.*
+3. *Expose the pitch of each AudioMixer and input the name of that parameter into the corresponding `Mixer Value Name` field of each `SpeechSource`*
+4. *The `Sample Size`, `Min Freq`, and `Max Freq` could be adjusted, but the default is 8192, 50, and 450, correspondingly.*
+5. *Add a **ContrastEnhancementManager** Script to the Scene.*
+6. *Adjust `Frequency Threshold` and `Dist Threshold` if needed.*
+7. *Assign the `Audio Mixer Group` that contains the `Audio Mixer` of the target `SpeechSource` to the `Master Mixer` field.*
+</details>
+
+
+
+https://github.com/user-attachments/assets/8f0dfec3-6a1e-4193-bacd-b633f52b0192
+
 
 
 <div id="shoulder-localization-helper"></div>
