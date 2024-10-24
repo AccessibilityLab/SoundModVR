@@ -499,3 +499,24 @@ This feature is managed by the Script **CustomFeedbackManager**. It currently su
 
 https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e1fbfebf-2059-4096-b323-22d097b61f42
 
+<div id="calming-noise"></div>
+
+### 4.3) Calming Noise
+*(* :thumbsup: *Recommended to use in a quiet scene)* <br />
+
+The **WhiteNoiseManager** Script is used for this feature. It has the following variables.<br />
+- The `Noise List` field should contain the list of `Audio Clip` that should be the noises used in this tool.<br />
+- The noise samples are included in the Sounds folder.<br />
+
+**Public Functions**<br />
+`OnNoiseSelection(int val)`: Use this function to choose which calming noise to play. The val is the index for the choice in the Noise List (1 indexed). val=0 means no sounds should be playing.
+
+<details><summary><b>Implementation Steps:</b></summary>
+
+1. *Add a **WhiteNoiseManager** Script to the scene.*
+2. In the object that has **WhiteNoiseManager** script, add an **AudioSource**.
+3. Assign the list of **AudioClip** of the noises to the `Noise List` field.
+5. Use `OnNoiseSelection(val)` to turn the tool on/off and to choose the noise clip to play.
+</details>
+
+https://github.com/user-attachments/assets/6e6e0a27-aec8-410c-b81d-3d7924416854
