@@ -379,14 +379,41 @@ The **HearingRangeManager** Script is used for this feature.<br />
 
 <details><summary><b>Implementation Steps:</b></summary>
 
-1. *Add a **HearingRangeManager** Scritp to the Scene.*
-2. Assign the **AudioSource** to the `Audio Source List` field, or attach this manager to a mutual parent of all such **AudioSource** objects.
+1. *Add a **HearingRangeManager** Script to the scene.*
+2. Assign all the **AudioSource** to modify to the `Audio Source List` field, or attach this manager to a mutual parent of all such **AudioSource** objects.
 3. Upon slider value change, call `ChangeHearingRange(float)` to change the hearing range.
 </details>
 
 
 
 https://github.com/user-attachments/assets/78b5195a-f9e3-4f6d-b10b-60ffbac39d36
+
+<div id="sound-distance-assistance"></div>
+
+### 3.5) Sound Distance Assistance
+*(* :thumbsup: *Recommended to use when user need to search a scene for a certain sound source)* <br />
+
+The **SoundDistanceAssistanceManager** Script is used for this feature. It has the following variables.<br />
+- The `Target Audio Source` field should contain the `Audio Source` of the target. This provides its location as well as access to the `AudioSource`.<br />
+- The `Starting Point` field should be the game object that marks the starting point so that this tool can interpolate the audio pitch between this point and the target point.<br />
+- The `Main Camera` field should contain the Main Camera that indicates where the user is.<br />
+
+**Public Functions**<br />
+`ToggleOnOff(bool)`: This function toggles this tool on and off.
+
+
+<details><summary><b>Implementation Steps:</b></summary>
+
+1. *Add a **SoundDistanceAssistanceManager** Script to the scene.*
+2. Assign the target **AudioSource** to the `Target Audio Source` field.
+3. Make an empty game object and put it at the starting point. Then, assign this game object to the `Starting Point` field.
+4. Attach the main camera of the player to the `Main Camera` field.
+5. Use `ToggleOnOff(bool)` to turn the tool on or off.
+</details>
+
+
+
+https://github.com/user-attachments/assets/27f841a0-a08c-4832-a4be-465717c36cc2
 
 
 
