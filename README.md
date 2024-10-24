@@ -254,7 +254,31 @@ The **ContrastEnhancementManager** is used to control this feature. It has the f
 
 https://github.com/user-attachments/assets/8f0dfec3-6a1e-4193-bacd-b633f52b0192
 
+<div id="beat-enhancement"></div>
 
+### 2.4) Beat Enhancement
+*(* :thumbsup: *Recommended to use for scenes where the music beat is an important part of the experience.)* <br />
+The **BeatEnhancementManager** is used to control this feature. It has the following variables: <br/>
+- The `Audio Source` is the Audio Source that is playing the music.<br/>
+- The `Beat Mixer Group` is the AudioMixer Group used for the change of volume of the music.<br/>
+- The `bpm` is the beats per minute of the music.<br/>
+
+**Public Functions**
+
+`StartBeatEnhancement()`: This function should be called to start the Beat Enhancement cycles, usually when the music starts playing.
+`ChooseBeatEnhancementPattern(int)`: Choose the Beat Enhancement pattern. 0 is no Beat Enhancement. Input should be in {0, 1, 2}.
+
+<details><summary><b>Implementation Steps:</b></summary>
+
+1. *Add a **BeatEnhancementManager** Script to the Scene and assign the `AudioSource` of the music to the `Audio Source` field.*
+2. *Create an `Audio Mixer Group` for the Beat Enhancement modifications, and assign it to the `Beat Mixer Group` field.*
+3. Set the `bpm` field to the BPM of the music.
+4. Call the `StartBeatEnhancement` function when the music starts playing.
+5. Use `ChooseBeatEnhancementPattern` to turn the feature on/off and choose between patterns.
+
+</details>
+
+https://github.com/user-attachments/assets/54b07858-b973-42ec-91df-b481d67e7900
 
 <div id="shoulder-localization-helper"></div>
 
