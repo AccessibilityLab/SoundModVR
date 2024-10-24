@@ -427,7 +427,6 @@ The **SilenceZoneManager** Script is used for this feature. It has the following
 **Public Functions**<br />
 `SilenceZoneToggle(bool)`: This function toggles this tool on and off.
 
-a
 <details><summary><b>Implementation Steps:</b></summary>
 
 1. *Add a **SilenceZoneManager** Script to the scene.*
