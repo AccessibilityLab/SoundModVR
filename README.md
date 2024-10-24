@@ -282,7 +282,7 @@ https://github.com/user-attachments/assets/54b07858-b973-42ec-91df-b481d67e7900
 
 <div id="shoulder-localization-helper"></div>
 
-### 6) Shoulder Localization Helper
+### 3.1) Shoulder Localization Helper
 *(* :thumbsup: *Recommended to use in situations where the directional location of a sound-producing object is important to the experience.)* <br />
  :eyes:  :eyes:  :eyes: See **ShoulderLocalizationExampleScene** for example.<br/><br/>
 The **ShoulderLocalizationManager** Script is used for this feature.<br/>
@@ -313,7 +313,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/04f0b5
 
 <div id="live-listen-helper"></div>
 
-### 7) Live Listen Helper
+### 3.2) Live Listen Helper
 *(* :thumbsup: *Recommended to use in situations where user is needs to locate sound source inside a small, reachable environment)* <br />
  :eyes:  :eyes:  :eyes: See **LivelistenHelperExampleScene** for example.<br/><br/>
 The **LiveListenHelperManager** Script is used for this feature.<br/>
@@ -341,9 +341,35 @@ The **LiveListenHelperManager** Script is used for this feature.<br/>
 https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/fa82c304-8386-4702-9cae-acadb6b5da2e
 
 
+<div id="left-right-balance"></div>
+
+### 3.3) Left-Right Balance
+*(* :thumbsup: *Recommended to accommodate users with unilateral hearing. Should be used in tandem with other sound localization guidance tools.)* <br />
+The **StereoSoundManager** Script is used for this feature. The scene would also need to have an **AudioManager** Script.<br />
+
+**Public Functions**
+`SetAllSoundSourceWithStereo(float)`: this function shifts the stereoPanVal to the input float value.
+`SetAllSoundSource2D_3D(bool bool_2D)`: switch all sounds marked by the **AudioManager** to be non-static between 3D sounds and 2D. 
+**Note that only 2D sounds in Unity have Stereo Pan. So to use left-right balance we need all sounds to be switched to 2D**
+
+
+<details><summary><b>Implementation Steps:</b></summary>
+
+1. *Add a **ShoulderLocalizationManager** Scritp to the Scene.*
+2. Add a slider to the scene.
+3. Upon slider value change, Call `SetAllSoundSource2D_3D(True)` to switch all sounds to 2D and call `SetAllSoundSourceWithStereo` to shift the Left-Right Balance.
+4. To reset all sounds, use `SetAllSoundSourceWithStereo(0)` to reset left-right balance, and use `SetAllSoundSource2D_3D(False)` to switch the non-static sounds back to 3D.
+</details>
+
+
+
+https://github.com/user-attachments/assets/892d50e9-f928-4db4-8066-8078e16e6608
+
+
+
 <div id="smart-notification"></div>
 
-### 8) Smart Notification
+### 4.1) Smart Notification
 *(* :thumbsup: *Recommended to use before important sound message is played.)* <br />
  :eyes:  :eyes:  :eyes: See **SmartNotificationExampleScene** for example.<br/><br/>
 This feature uses the script **SmartNotificationManager** to control the on and off, and the sounds played as the smart notification.<br/>
@@ -371,7 +397,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/b92e57
 
 <div id="custom-feedback-sound"></div>
 
-### 9) Custom Feedback Sound
+### 4.2) Custom Feedback Sound
 *(* :thumbsup: *Recommended to use when there are feedback sounds in the program.)* <br />
  :eyes:  :eyes:  :eyes: See **CustomFeedbackSoundExampleScene** for example.<br/><br/>
 This feature is managed by the Script **CustomFeedbackManager**. It currently supports a correct and incorrect feedback sound.<br/>
