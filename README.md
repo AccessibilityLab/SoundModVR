@@ -416,6 +416,30 @@ The **SoundDistanceAssistanceManager** Script is used for this feature. It has t
 https://github.com/user-attachments/assets/27f841a0-a08c-4832-a4be-465717c36cc2
 
 
+<div id="silence-zone"></div>
+
+### 3.6) Silence Zone
+*(* :thumbsup: *Recommended to use in a scene with overlapping ambient sounds)* <br />
+
+The **SilenceZoneManager** Script is used for this feature. It has the following variables.<br />
+- The `Audio Source List` field should contain the list of `Audio Source` that should be modified by this tool.<br />
+
+**Public Functions**<br />
+`SilenceZoneToggle(bool)`: This function toggles this tool on and off.
+
+a
+<details><summary><b>Implementation Steps:</b></summary>
+
+1. *Add a **SilenceZoneManager** Script to the scene.*
+2. Assign the list of **AudioSource** to the `Audio Source List` field.
+5. Use `SilenceZoneToggle(bool)` to turn the tool on or off.
+</details>
+
+
+
+https://github.com/user-attachments/assets/07aff8fe-b5b0-4c88-9c5f-f24e891d22a4
+
+
 
 <div id="smart-notification"></div>
 
