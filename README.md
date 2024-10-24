@@ -366,6 +366,7 @@ The **StereoSoundManager** Script is used for this feature. The scene would also
 https://github.com/user-attachments/assets/892d50e9-f928-4db4-8066-8078e16e6608
 
 <div id="hearing-range-adjustment"></div>
+
 ### 3.4) Hearing Range Adjustment
 *(* :thumbsup: *Recommended to use in scenarios with important sound sources scattered around the scene)* <br />
 
