@@ -347,9 +347,9 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/fa82c3
 *(* :thumbsup: *Recommended to accommodate users with unilateral hearing. Should be used in tandem with other sound localization guidance tools.)* <br />
 The **StereoSoundManager** Script is used for this feature. The scene would also need to have an **AudioManager** Script.<br />
 
-**Public Functions**
-`SetAllSoundSourceWithStereo(float)`: this function shifts the stereoPanVal to the input float value.
-`SetAllSoundSource2D_3D(bool bool_2D)`: switch all sounds marked by the **AudioManager** to be non-static between 3D sounds and 2D. 
+**Public Functions**<br />
+`SetAllSoundSourceWithStereo(float)`: this function shifts the stereoPanVal to the input float value.<br />
+`SetAllSoundSource2D_3D(bool bool_2D)`: switch all sounds marked by the **AudioManager** to be non-static between 3D sounds and 2D. <br />
 **Note that only 2D sounds in Unity have Stereo Pan. So to use left-right balance we need all sounds to be switched to 2D**
 
 
