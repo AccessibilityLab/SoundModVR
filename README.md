@@ -39,7 +39,7 @@ This is the list of features. They are divided into 4 categories - ***Prioritiza
 ## 4. Usage Guide
 <div id="group-prioritization"></div>
 
-### 1) Group Prioritization 
+### 1.1) Group Prioritization 
 *(* :thumbsup: *Recommended to use in situations where multiple groups of conversation/sounds are happening concurrently.)* <br />
  :eyes:  :eyes:  :eyes: See **GroupPrioritizationExampleScene** for example.<br/><br/>
  Use **GroupPrioritizationmanager**, **GroupManager** and **SpeechSource** scripts for this feature.<br/>
@@ -66,7 +66,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/e7726d
 
 <div id="keyword-prioritization"></div>
 
-### 2) Keyword Prioritization
+### 1.2) Keyword Prioritization
 *(* :thumbsup: *Recommended to use in situations where important speech is delivered.)* <br />
  :eyes:  :eyes:  :eyes: See **KeywordPrioritizationExampleScene** for example.<br/><br/>
 The **KeywordDetectionManager** is used to control this feature.<br/>
@@ -97,7 +97,7 @@ https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/98a22b
 
 <div id="sound-prioritization"></div>
 
-### 3) Sound Prioritization
+### 1.3) Sound Prioritization
 *(* :thumbsup: *Recommended to use in situations where character speech/ important sound and environment sounds/background music are concurrent.)* <br />
  :eyes:  :eyes:  :eyes: See **SoundPrioritizationExampleScene** for example.<br/><br/>
 The **SoundPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Audio Mixer`, the `Env Vol Label`, the `Character Audio Source List`, and the `Lower Env On Speech Setting`.<br/>
@@ -127,6 +127,39 @@ Right before the character speech, call `LowerEnvSoundsVolume(audioSource)`, as 
 
 
 https://github.com/xinyun-cao/SoundCusVR-Feature-Toolkit/assets/144272763/89e8aa06-dd85-4c75-89b2-9b9d2013ea3f
+
+<div id="direction-based-prioritization"></div>
+
+### 1.4) Direction-Based Prioritization
+*(* :thumbsup: *Recommended to use in situations where users should prioritize the sound they are facing.)* <br />
+The **DirectionPrioritizationManager** is used to control this feature. It has several properties to set before use, including the `Prioritization Audio Mixer`, the `General Audio Mixer`, the `General Audio Volume Label`, `Main Camera`, and the `Degree Threshold`.<br/>
+- The `Prioritization Audio Mixer` is the AudioMixerGroup that will be used for the sound to prioritize.<br/>
+- The `General Audio Mixer` is the AudioMixerGroup that will be used for all other sounds.<br/>
+- The `General Audio Volume Label` is the exposed parameter from the general audio mixer group. To do this, right-click on the volume in the audio mixer inspector of that audio mixer group and select “Expose “” to script”. It will then be accessible in exposed parameters. <br/>
+- The Main Camera should be assigned to the `Main Camera` field.<br/>
+- The `Degree threshold` is used to determine whether a user is facing a sound source. It is the maximum degree of angle between their line of sight and the line connecting the location of the source to the player.<br/>
+
+You will also need an **AudioManager** Script in the scene. Please see the implementation details below.
+
+**Public Functions**: N/A
+
+<details><summary><b>Implementation Steps:</b></summary>
+
+1. *Add an **AudioManager** to the scene and attach a **AudioManager** Script.*
+2. *Add an **DirectionPrioritizationManager** to the scene and attach a **DirectionPrioritizationManager** Script.*
+3. *Create two new Mixer Group in the **AudioMixer** tab. Assign one to be the Prioritization Audio Mixer and the other to be the General Audio Mixer*
+4. *Go to the Inspector of the music mixer group controller of the General Audio Mixer, right-click on **Attenuation - Volume**, and select "Expose ... to script"*
+5. *In the "Exposed parameters" list in the Audio Mixer tab, get the name of the newly created parameter.*
+6. *Input the name of the new parameter to `General Audio Volume Label` field.*
+7. *Assign thee Main Camera to be the main camera that is linked to the player's head movement.*
+8. *Set the Degree threshold. The default is 10 degrees.*
+</details>
+
+
+
+https://github.com/user-attachments/assets/3c458945-df81-452d-a360-a5f2f738845b
+
+
 
 
 <div id="volume-and-pitch-adjustment"></div>
